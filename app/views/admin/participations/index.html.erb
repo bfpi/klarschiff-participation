@@ -1,0 +1,28 @@
+
+<%= paginate @participations %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"><%= Participation.human_attribute_name :id %></th>
+      <th scope="col"><%= Participation.human_attribute_name :authority_name %></th>
+      <th scope="col"><%= Participation.human_attribute_name :contact_name %></th>
+      <th scope="col"><%= Participation.human_attribute_name :created_at %></th>
+      <th scope="col" class="actions"><%= t('actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @participations.each do |entry| -%>
+      <tr>
+        <th scope="row"><%= entry.id %></th>
+        <td><%= entry.authority_name %></td>
+        <td><%= entry.contact_name %></td>
+        <td><%= l(entry.created_at) %></td>
+        <td class="actions">
+          <%= link_to content_tag(:i, '', class: 'fa fa-search'), admin_participation_path(entry),
+                      class: 'btn btn-sm btn-outline-primary' %>
+        </td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+<%= paginate @participations %>

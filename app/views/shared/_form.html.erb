@@ -1,0 +1,47 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h3 class="card-title"><%= Participation.human_attribute_name :authority %></h3>
+
+    <div class="mb-3">
+      <%= form.label :authority_name, class: 'form-label' %>
+      <%= form.text_field :authority_name, class: 'form-control', disabled: !form.object.new_record? %>
+      <%= show_error_messages form.object, :authority_name %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :authority_address, class: 'form-label' %>
+      <%= form.text_area :authority_address, class: 'form-control', rows: 5, disabled: !form.object.new_record? %>
+      <%= show_error_messages form.object, :authority_address %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :authority_email, class: 'form-label' %>
+      <%= form.text_field :authority_email, class: 'form-control', disabled: !form.object.new_record? %>
+      <%= show_error_messages form.object, :authority_email %>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h3 class="card-title"><%= Participation.human_attribute_name :contact, name: Settings::Client.name %></h3>
+
+    <div class="mb-3">
+      <%= form.label :contact_name, class: 'form-label' %>
+      <%= form.text_field :contact_name, class: 'form-control', disabled: !form.object.new_record? %>
+      <%= show_error_messages form.object, :contact_name %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :contact_email, class: 'form-label' %>
+      <%= form.text_field :contact_email, class: 'form-control', disabled: !form.object.new_record? %>
+      <%= show_error_messages form.object, :contact_email %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :contact_phone, class: 'form-label' %>
+      <%= form.text_field :contact_phone, class: 'form-control', disabled: !form.object.new_record? %>
+      <%= show_error_messages form.object, :contact_phone %>
+    </div>
+  </div>
+</div>

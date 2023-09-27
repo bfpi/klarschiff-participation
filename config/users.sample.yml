@@ -1,0 +1,15 @@
+development: &default
+  user:
+    username: md5-password
+
+test:
+  <<: *default
+
+alpha:
+  <<: *default
+
+consolidation:
+  <<: *default
+
+production:
+  <<: *default

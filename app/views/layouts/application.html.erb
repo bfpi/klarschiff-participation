@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KlarschiffParticipation</title>
+    <title><%= t('pagetitle', name: Settings::Client.name) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+     <header>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-2">
+              <%= image_tag image_path('klarschiff.png'), id: 'logo1' %>
+            </div>
+            <div class="col-8 text-center">
+              <%= link_to [:root], data: { turbolinks: false } do %>
+                <h1><%= Settings::Client.name %></h1>
+              <% end -%>
+            </div>
+            <div class="col-2">
+              <%= image_tag image_path('logo.png'), id: 'logo2', class: 'img-fluid' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-5">
+              <%= yield :nav %>
+            </div>
+            <div class="col-7 text-end">
+              <% if Current.user -%>
+                <%= link_to(t(:logout), logins_path, method: :delete) %> |
+              <% end -%>
+              <%= link_to t(:imprint), Settings::Url.imprint %>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div id="main-content" class="container">
+        <%= yield %>
+      </div>
+      <footer class="footer">
+        <div class="container">
+          <%= yield :footer %>
+        </div>
+      </footer>
   </body>
 </html>
