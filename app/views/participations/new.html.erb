@@ -1,4 +1,6 @@
 
+<h2 class="text-center mb-4"><%= t('pagetitle', name: Settings::Client.name) %></h2>
+
 <%= form_for @participation, html: { honeypot: true } do |form| %>
   <%= render partial: 'shared/form', locals: { form: } %>
 

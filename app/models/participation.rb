@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Participation < ApplicationRecord
-  paginates_per 15
-
   attr_accessor :privacy_policy_accepted
 
   validates :privacy_policy_accepted, acceptance: true

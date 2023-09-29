@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :participations, only: %i[new create]
 
     namespace :admin do
-      resources :participations, only: %i[index show]
+      resources :participations, only: %i[index]
       root 'participations#index'
     end
     root 'participations#new'

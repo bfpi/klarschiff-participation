@@ -1,0 +1,25 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Session Setting",
+      "warning_code": 29,
+      "fingerprint": "f0ee1cc1980474c82a013645508f002dcc801e00db5592f7dd8cd6bdb93c73fe",
+      "check_name": "SessionSettings",
+      "message": "Session secret should not be included in version control",
+      "file": "config/secrets.yml",
+      "line": 2,
+      "link": "https://brakemanscanner.org/docs/warning_types/session_setting/",
+      "code": null,
+      "render_path": null,
+      "location": null,
+      "user_input": null,
+      "confidence": "High",
+      "cwe_id": [
+        798
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2023-09-29 06:53:11 +0200",
+  "brakeman_version": "6.0.1"
+}

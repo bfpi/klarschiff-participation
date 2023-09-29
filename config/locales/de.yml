@@ -13,12 +13,14 @@ de:
         created_at: Erstellungszeitpunkt
         id: ID
         privacy_policy_accepted: Datenschutzerklärung
-  actions: Aktion
   back: Zurück
   imprint: Impressum
-  pagetitle: "Interessenbekundung an einer Teilnahme an %{name}"
-  success: Erfolgreich gespeichert
-  success_message: Vielen Dank für Ihr Interesse an der Teilnahme am %{name}.
-  submit: Absenden
+  pagetitle: "Interessenbekundung zur Teilnahme an %{name}"
   privacy: Datenschutz
   privacy_policy_html: "Ich habe die <strong><a href=\"%{url}\" target=\"_blank\">Datenschutzerklärung</a></strong> nach der EU-DSGVO zur Kenntnis genommen und stimme der Verarbeitung meiner persönlichen Daten zu."
+  submit: Absenden
+  success: Erfolgreich gespeichert
+  success_message: Vielen Dank für Ihr Interesse an der Teilnahme am %{name}.
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M:%S"
