@@ -85,7 +85,7 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'bootstrap', '~> 5.1.3' # CSS variable usage in v5.2.x is incomplete until Bootstrap 6
+gem 'bootstrap', '~> 5.3.1' # CSS variable usage in v5.2.x is incomplete until Bootstrap 6
 gem 'coffee-rails'
 gem 'email_validator'
 gem 'font-awesome-rails'
