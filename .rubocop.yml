@@ -12,6 +12,7 @@ AllCops:
     - 'bin/rails'
     - 'bin/rake'
     - 'bin/setup'
+    - 'config/initializers/new_framework_defaults_*.rb'
     - 'db/schema.rb'
     - 'vendor/**/**'
 
