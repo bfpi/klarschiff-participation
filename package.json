@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@coffeelint/cli": "^5.2.5",
-    "@rails/actiontext": "^7.1.0",
+    "@rails/actiontext": "^7.2.100",
     "eslint": "^8.51.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-html-erb": "^1.0.1",
