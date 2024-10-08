@@ -7,10 +7,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
-  password: <password>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  port: 5432
+  host: <%= ENV.fetch('KLARSCHIFF_PARTICIPATION_DATABASE_HOST', 'localhost') %>
+  password: <%= ENV.fetch('KLARSCHIFF_PARTICIPATION_DATABASE_PASSWORD', 'klarschiff_participation') %>
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS', 5) %>
+  port: <%= ENV.fetch('KLARSCHIFF_PARTICIPATION_DATABASE_PORT', 5432) %>
+  username: <%= ENV.fetch('KLARSCHIFF_PARTICIPATION_DATABASE_USERNAME', 'klarschiff_participation') %>
   username: klarschiff_participation
 
 development:
@@ -27,4 +28,3 @@ test:
 production:
   <<: *default
   database: klarschiff_participation_production
-  password: <%= ENV['KLARSCHIFF_PARTICIPATION_DATABASE_PASSWORD'] %>
