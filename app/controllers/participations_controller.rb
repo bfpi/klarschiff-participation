@@ -2,6 +2,7 @@
 
 class ParticipationsController < ApplicationController
   skip_before_action :authenticate
+  invisible_captcha only: :create, honeypot: :subtitle
 
   def new
     @participation = Participation.new
