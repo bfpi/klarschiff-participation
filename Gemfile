@@ -89,7 +89,7 @@ gem 'bootstrap', '~> 5.1.3' # CSS variable usage in v5.2.x is incomplete until B
 gem 'coffee-rails'
 gem 'email_validator'
 gem 'font-awesome-rails'
-gem 'honeypot-captcha'
+gem 'invisible_captcha'
 gem 'jquery-rails'
 gem 'jquery-ui-rails', github: 'jquery-ui-rails/jquery-ui-rails', tag: 'v7.0.0'
 gem 'rails-i18n'
