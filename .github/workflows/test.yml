@@ -12,8 +12,6 @@ jobs:
           POSTGRES_DB: klarschiff_participation_test
           POSTGRES_PASSWORD: <password>
           POSTGRES_USER: klarschiff_participation
-          KLARSCHIFF_PARTICIPATION_DATABASE_PASSWORD: ${{ POSTGRES_PASSWORD }}
-          KLARSCHIFF_PARTICIPATION_DATABASE_USERNAME: ${{ POSTGRES_USER }}
         ports: ["5432:5432"]
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
@@ -29,9 +27,14 @@ jobs:
         with:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: DEBUG
+        env:
+          KLARSCHIFF_PARTICIPATION_DATABASE_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          KLARSCHIFF_PARTICIPATION_DATABASE_USERNAME: ${{ env.POSTGRES_USER }}
+          KLARSCHIFF_PARTICIPATION_DATABASE_USERNAME2: $POSTGRES_USER
         run: |
           echo "POSTGRES_USER: $POSTGRES_USER"
           echo "KLARSCHIFF_PARTICIPATION_DATABASE_USERNAME: $KLARSCHIFF_PARTICIPATION_DATABASE_USERNAME"
+          echo "KLARSCHIFF_PARTICIPATION_DATABASE_USERNAME2: $KLARSCHIFF_PARTICIPATION_DATABASE_USERNAME2"
           env | sort
       - name: Run Rails Tests
         run: bundle exec rails test -b -d
