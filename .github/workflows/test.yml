@@ -29,9 +29,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - name: DEBUG
-        run: |
-          env | sort
       - name: Run Rails Tests
         run: bundle exec rails test -b -d
 
