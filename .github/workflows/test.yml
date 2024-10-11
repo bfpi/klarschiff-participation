@@ -31,7 +31,6 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: DEBUG
         run: |
-          echo ${{postgres.POSTGRES_DB}}
           echo ${{services.postgres.POSTGRES_DB}}
           env | sort
       - name: Run Rails Tests
