@@ -1,0 +1,87 @@
+<%= render partial: 'form_buttons', locals: { form: } %>
+
+<% if entry.errors.any? %>
+  <div class="alert alert-danger">
+    <ul class="list-unstyled mb-0">
+      <% entry.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h3 class="card-title"><%= Participation.human_attribute_name :authority %></h3>
+
+    <div class="mb-3">
+      <%= form.label :authority_name, class: 'form-label' %>
+      <%= form.text_field :authority_name, class: 'form-control' %>
+      <%= show_error_messages form.object, :authority_name %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :authority_address, class: 'form-label' %>
+      <%= form.text_area :authority_address, class: 'form-control' %>
+      <%= show_error_messages form.object, :authority_address %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :authority_email, class: 'form-label' %>
+      <%= form.text_field :authority_email, class: 'form-control' %>
+      <%= show_error_messages form.object, :authority_email %>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h3 class="card-title"><%= Participation.human_attribute_name :contact, name: Settings::Client.name %></h3>
+
+    <div class="mb-3">
+      <%= form.label :contact_name, class: 'form-label' %>
+      <%= form.text_field :contact_name, class: 'form-control' %>
+      <%= show_error_messages form.object, :contact_name %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :contact_email, class: 'form-label' %>
+      <%= form.text_field :contact_email, class: 'form-control' %>
+      <%= show_error_messages form.object, :contact_email %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :contact_phone, class: 'form-label' %>
+      <%= form.text_field :contact_phone, class: 'form-control' %>
+      <%= show_error_messages form.object, :contact_phone %>
+    </div>
+  </div>
+</div>
+
+<% if Current.user.role_admin? %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h3 class="card-title"><%= Participation.human_attribute_name :leading_cooperation_partner %></h3>
+
+      <div class="mb-3">
+        <%= form.label :leading_cooperation_partner_name, class: 'form-label' %>
+        <%= form.text_field :leading_cooperation_partner_name, class: 'form-control' %>
+        <%= show_error_messages form.object, :leading_cooperation_partner_name %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :leading_cooperation_partner_address, class: 'form-label' %>
+        <%= form.text_area :leading_cooperation_partner_address, class: 'form-control' %>
+        <%= show_error_messages form.object, :leading_cooperation_partner_address %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :leading_cooperation_partner_email, class: 'form-label' %>
+        <%= form.text_field :leading_cooperation_partner_email, class: 'form-control' %>
+        <%= show_error_messages form.object, :leading_cooperation_partner_email %>
+      </div>
+    </div>
+  </div>
+<% end -%>
+
+<%= render partial: 'form_buttons', locals: { form: } %>

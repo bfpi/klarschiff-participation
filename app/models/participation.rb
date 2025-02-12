@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Participation < ApplicationRecord
+  include Logging
+
   attr_accessor :privacy_policy_accepted
 
   validates :privacy_policy_accepted, acceptance: true

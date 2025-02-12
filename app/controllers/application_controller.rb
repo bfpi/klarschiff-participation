@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       Current.user = session[:login]
       logger.info "Username: #{Current.user}"
     else
-      redirect_to new_logins_url
+      redirect_to new_admin_logins_url
     end
   end
 end

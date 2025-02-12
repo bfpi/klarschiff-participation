@@ -42,7 +42,13 @@ Metrics/BlockLength:
 
 Metrics/MethodLength:
   Exclude:
-    - 'db/migrate/20231010092354_create_active_storage_tables.active_storage.rb'
+    - 'db/migrate/*'
+
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+Minitest/MultipleAssertions:
+  Max: 15
 
 Style/Documentation:
   Enabled: false

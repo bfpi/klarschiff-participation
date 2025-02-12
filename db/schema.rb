@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_10_093108) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_12_122111) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +61,25 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_10_093108) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "log_entries", force: :cascade do |t|
+    t.text "table"
+    t.text "attr"
+    t.bigint "subject_id"
+    t.text "subject_name"
+    t.text "action"
+    t.text "user"
+    t.text "old_value"
+    t.text "new_value"
+    t.bigint "old_value_id"
+    t.bigint "new_value_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["new_value_id"], name: "index_log_entries_on_new_value_id"
+    t.index ["table", "subject_id"], name: "index_log_entries_on_table_and_subject_id"
+    t.index ["user_id"], name: "index_log_entries_on_user_id"
+  end
+
   create_table "participations", force: :cascade do |t|
     t.string "authority_name"
     t.string "authority_address"
@@ -70,8 +89,24 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_10_093108) do
     t.string "contact_phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "leading_cooperation_partner_name"
+    t.string "leading_cooperation_partner_address"
+    t.string "leading_cooperation_partner_email"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.boolean "active", default: false, null: false
+    t.text "name"
+    t.text "login"
+    t.text "password_digest"
+    t.integer "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["login"], name: "index_users_on_login", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "log_entries", "users"
 end

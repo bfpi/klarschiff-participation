@@ -1,0 +1,30 @@
+
+$font-size-base: 0.9rem;
+$h1-font-size: $font-size-base * 1.6;
+$table-cell-padding: 0.5rem;
+$spinner-width: 1rem;
+$yellow: #f80;
+
+@import 'bootstrap';
+@import 'font-awesome';
+@import 'jquery-ui/core';
+@import 'jquery-ui/theme';
+
+.form-check {
+  padding-left: 0;
+}
+
+nav.navbar {
+  margin-bottom: 1em;
+}
+
+.content.container {
+  padding-bottom: 50px;
+}
+
+.footer {
+  @extend .fixed-bottom;
+  @extend .py-2;
+  background-color: $gray-200;
+  border-top: 1px solid $secondary;
+}

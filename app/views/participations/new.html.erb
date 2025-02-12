@@ -3,7 +3,7 @@
 
 <%= form_for @participation do |form| %>
   <%= form.invisible_captcha :subtitle %>
-  <%= render partial: 'shared/form', locals: { form: } %>
+  <%= render partial: 'form', locals: { form: } %>
 
   <div class="form-check mb-3">
     <%= form.check_box :privacy_policy_accepted, class: 'form-check-input' %>

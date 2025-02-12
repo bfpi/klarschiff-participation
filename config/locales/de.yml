@@ -1,6 +1,24 @@
 de:
+  'false': Nein
+  'true': Ja
+
+  actions: Aktion
+  new: anlegen
+  edit: bearbeiten
+
+  attributes:
+    created_at: Zeitstempel
+    id: ID
+    user: Benutzer
+
   activerecord:
     attributes:
+      log_entry:
+        action: Aktion
+        new_value: Wert alt
+        old_value: Wert neu
+        subject_id: Datensatz
+        subject_name: Datensatz
       participation:
         authority_address: Anschrift
         authority_email: E-Mail
@@ -10,9 +28,39 @@ de:
         contact: Informationen zur Ansprechperson für %{name}
         contact_name: Name
         contact_phone: Telefon
+        leading_cooperation_partner: Federführender Kooperationspartner
+        leading_cooperation_partner_name: Bezeichnung
+        leading_cooperation_partner_address: Anschrift
+        leading_cooperation_partner_email: E-Mail
         created_at: Erstellungszeitpunkt
-        id: ID
         privacy_policy_accepted: Datenschutzerklärung
+
+      user:
+        password: Passwort
+        password_confirmation: Passwortbestätigung
+    errors:
+      authorization_error: Sie besitzen nicht die notwendigen Rechte für diese Aktion!
+    models:
+      log_entry: Verlauf
+      participation: Partner
+      user: Benutzer
+  enums:
+    user:
+      role:
+        admin: Administrator
+        editor: Bearbeiter
+
+  action:
+    abort: Abbrechen
+    confirm_delete: Soll wirklich gelöscht werden?
+    new: Neuer Datensatz
+    save: Speichern
+    save_and_close: Speichern & Schließen
+  admin:
+    logins:
+      empty_parameter: Login und Passwort müssen angegeben werden.
+      login_incorrect: Login oder Passwort sind nicht korrekt.
+
   back: Zurück
   imprint: Impressum
   pagetitle: "Interessenbekundung zur Teilnahme an %{name}"
