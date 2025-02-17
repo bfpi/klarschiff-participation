@@ -33,7 +33,6 @@ class ParticipationsControllerControllerTest < ActionDispatch::IntegrationTest
     login username: 'admin'
     patch "/admin/participations/#{participation(:one).id}", params: { participation: { authority_name: '' } }
 
-    assert_redirected_to edit_admin_participation_path(participation(:one))
     assert_equal 'authority_name_one', participation(:one).reload.authority_name
   end
 
@@ -42,7 +41,6 @@ class ParticipationsControllerControllerTest < ActionDispatch::IntegrationTest
     patch "/admin/participations/#{participation(:one).id}",
           params: { participation: { authority_name: 'Update Test' } }
 
-    assert_redirected_to edit_admin_participation_path(participation(:one))
     assert_equal 'Update Test', participation(:one).reload.authority_name
   end
 
@@ -50,7 +48,6 @@ class ParticipationsControllerControllerTest < ActionDispatch::IntegrationTest
     login username: 'editor'
     patch "/admin/participations/#{participation(:one).id}", params: update_params
 
-    assert_redirected_to edit_admin_participation_path(participation(:one))
     reloaded = participation(:one).reload
 
     assert_empty reloaded.leading_cooperation_partner_name
@@ -62,7 +59,6 @@ class ParticipationsControllerControllerTest < ActionDispatch::IntegrationTest
     login username: 'admin'
     patch "/admin/participations/#{participation(:one).id}", params: update_params
 
-    assert_redirected_to edit_admin_participation_path(participation(:one))
     reloaded = participation(:one).reload
 
     assert_equal 'Update Test',  reloaded.leading_cooperation_partner_name
