@@ -1,7 +1,7 @@
 
 <h2 class="text-center mb-4"><%= t('pagetitle', name: Settings::Client.name) %></h2>
 
-<%= form_for @participation do |form| %>
+<%= form_for @participation, data: { turbo: false } do |form| %>
   <%= form.invisible_captcha :subtitle %>
   <%= render partial: 'form', locals: { form: } %>
 

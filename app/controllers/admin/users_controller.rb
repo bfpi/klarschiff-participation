@@ -5,7 +5,7 @@ module Admin
     before_action -> { check_authorization(:admin) }
 
     def index
-      @entries = User.order(:login).page(params[:page] || 1).per(params[:per_page] || 20)
+      @entries = User.active.order(:login).page(params[:page] || 1).per(params[:per_page] || 20)
     end
 
     def new

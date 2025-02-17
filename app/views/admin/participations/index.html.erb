@@ -1,38 +1,35 @@
 <div class="container">
-  <h1><%= User.model_name.human(count: 2) %></h1>
+  <h1><%= Participation.model_name.human(count: 2) %></h1>
 
-    <%= paginate @participations %>
+  <%= paginate @participations %>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col"><%= Participation.human_attribute_name :id %></th>
-          <% %i[authority_name authority_address authority_email contact_name contact_email contact_phone].each do |col| %>
-            <th scope="col"><%= Participation.human_attribute_name :authority_name %></th>
-          <% end -%>
-          <th scope="col"><%= Participation.human_attribute_name :created_at %></th>
-          <th scope="col" class="actions"><%= t('actions') %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @participations.each do |entry| -%>
-          <tr>
-            <th scope="row"><%= entry.id %></th>
-            <% %i[authority_name authority_address authority_email contact_name contact_email contact_phone].each do |col| %>
-              <td><%= entry.send(col) %></td>
-            <% end -%>
-            <td><%= l(entry.created_at) %></td>
-              <td class="actions">
-                <%= link_to content_tag(:i, '', class: 'fa fa-pencil'), edit_admin_participation_path(entry),
-                            class: 'btn btn-sm btn-outline-primary' %>
-            <%= link_to content_tag(:i, '', class: 'fa fa-trash'), admin_participation_path(entry),
-                        class: 'btn btn-sm btn-outline-primary',
-                        data: { turbo_method: :delete, turbo_confirm: t('action.confirm_delete') } %>
-              </td>
-          </tr>
+  <table class="table">
+    <thead>
+      <tr>
+        <% %i[id status authority_name authority_address authority_email contact_name contact_email contact_phone
+              created_at].each do |col| %>
+          <th scope="col"><%= Participation.human_attribute_name col %></th>
         <% end -%>
-      </tbody>
-    </table>
+        <th scope="col" class="actions"><%= t('actions') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @participations.each do |entry| -%>
+        <tr>
+          <th scope="row"><%= entry.id %></th>
+          <td><%= Participation.human_enum_name :status, entry.status %></td>
+          <% %i[authority_name authority_address authority_email contact_name contact_email contact_phone].each do |col| %>
+            <td><%= entry.send(col) %></td>
+          <% end -%>
+          <td><%= l(entry.created_at) %></td>
+          <td class="actions">
+            <%= link_to content_tag(:i, '', class: 'fa fa-pencil'), edit_admin_participation_path(entry),
+                        class: 'btn btn-sm btn-outline-primary' %>
+          </td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
 
-    <%= paginate @participations %>
+  <%= paginate @participations %>
 </div>

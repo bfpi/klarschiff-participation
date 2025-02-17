@@ -34,7 +34,15 @@ de:
         leading_cooperation_partner_email: E-Mail
         created_at: Erstellungszeitpunkt
         privacy_policy_accepted: Datenschutzerklärung
-
+        partner_number: Partner-Nummer
+        name_of_the_signatory: Name der unterzeichnenden Person
+        official_email_authority: offizielle E-Mail der Behörde
+        roles: Rolle im KS-Verbund
+        effectiveness_date: Datum der Wirksamkeit
+        withdrawal_receipt_date: Eingangsdatum Austritt
+        withdrawal_name_of_the_signatory: Name der unterzeichnenden Person
+        withdrawal_effectiveness_date: Datum der Wirksamkeit Austritt
+        withdrawal_effectiveness_date_corrected: Datum der Wirksamkeit Austritt korrigiert
       user:
         password: Passwort
         password_confirmation: Passwortbestätigung
@@ -45,6 +53,18 @@ de:
       participation: Partner
       user: Benutzer
   enums:
+    participation:
+      role:
+        procedural_responsibility: Verfahrensverantwortung
+        office: Geschäftsstelle
+        coordination: Koordinierungsstelle
+        steering_committee: Mitglied Steuerungskreis
+        product_owner: Product Owner
+      status:
+        interested: interessiert
+        prepared: vorbereitet
+        informed: informiert
+        joined: beigetreten
     user:
       role:
         admin: Administrator
@@ -60,6 +80,12 @@ de:
     logins:
       empty_parameter: Login und Passwort müssen angegeben werden.
       login_incorrect: Login oder Passwort sind nicht korrekt.
+    participations:
+      form:
+        toggle_all: Alles öffnen/schließen
+  errors:
+    messages:
+      invalid_date: ist kein gültiges Datum
 
   back: Zurück
   imprint: Impressum

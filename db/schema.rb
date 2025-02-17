@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_12_122111) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_17_085436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,6 +92,16 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_12_122111) do
     t.string "leading_cooperation_partner_name"
     t.string "leading_cooperation_partner_address"
     t.string "leading_cooperation_partner_email"
+    t.integer "status", default: 0
+    t.string "partner_number"
+    t.string "name_of_the_signatory"
+    t.string "official_email_authority"
+    t.integer "role"
+    t.date "effectiveness_date"
+    t.date "withdrawal_receipt_date"
+    t.string "withdrawal_name_of_the_signatory"
+    t.date "withdrawal_effectiveness_date"
+    t.date "withdrawal_effectiveness_date_corrected"
   end
 
   create_table "users", force: :cascade do |t|

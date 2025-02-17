@@ -28,3 +28,13 @@ nav.navbar {
   background-color: $gray-200;
   border-top: 1px solid $secondary;
 }
+
+div.field_with_errors {
+  display: inline;
+
+  input {
+    padding: 2px;
+    background-color: red;
+    display: table
+  }
+}

@@ -9,7 +9,7 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-    @participation = Participation.new(permitted_params)
+    @participation = Participation.new({ status: :interested }.merge(permitted_params))
 
     return if @participation.save
 
