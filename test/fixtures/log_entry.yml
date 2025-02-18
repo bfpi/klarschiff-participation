@@ -3,7 +3,7 @@
 user_entry:
   action: Benutzer geändert
   attr: user
-  created_at: <%= Time.current - 12.hours %>
+  created_at: <%= 12.hours.ago %>
   new_value: Benutzer Test
   old_value:
   subject_id: <%= ActiveRecord::FixtureSet.identify :delegated %>

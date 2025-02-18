@@ -7,8 +7,6 @@ module Logging
     attr_accessor :omit_field_log, :omit_field_log_values
   end
 
-  ENUM_ATTRS = %w[description_status priority role status trust_level].freeze
-
   included do
     self.omit_field_log = %w[updated_at]
     self.omit_field_log_values = []
@@ -112,14 +110,9 @@ module Logging
     end
   end
 
-  def self.enum_value(value, attr, subject)
-    i18n_string = "enums.#{subject.model_name.singular}.#{attr}"
-    I18n.t("#{i18n_string}.#{value}", default: value ? I18n.t(i18n_string)[value] : nil)
-  end
-
   def self.convert_value(value, attr, subject)
-    return Logging.enum_value(value, attr, subject) if attr.in?(ENUM_ATTRS)
-    return ActiveSupport::NumberHelper.number_to_delimited(value) if value.is_a? Numeric
+    return subject.human_enum_name(attr, value) if attr.in?(subject.defined_enums.keys)
+    return ActiveSupport::NumberHelper.number_to_delimited(value) if value.is_a?(Numeric)
     return I18n.l(value) if value.is_a?(Date) || value.is_a?(ActiveSupport::TimeWithZone)
 
     case value

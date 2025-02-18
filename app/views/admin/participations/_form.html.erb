@@ -1,14 +1,14 @@
 <%= render partial: 'form_buttons', locals: { form: } %>
 
-<% if entry.errors.any? %>
+<% if entry.errors.any? -%>
   <div class="alert alert-danger">
     <ul class="list-unstyled mb-0">
-      <% entry.errors.full_messages.each do |msg| %>
+      <% entry.errors.full_messages.each do |msg| -%>
         <li><%= msg %></li>
-      <% end %>
+      <% end -%>
     </ul>
   </div>
-<% end %>
+<% end -%>
 
 <div class="card mb-4">
   <div class="card-body">
@@ -174,7 +174,7 @@
   </div>
 </div>
 
-<% if Current.user.role_admin? %>
+<% if Current.user.role_admin? -%>
   <div class="card mb-4">
     <div class="card-body">
       <h3 class="card-title">

@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class ParticipationsController < ApplicationController
-  skip_before_action :authenticate
   invisible_captcha only: :create, honeypot: :subtitle
 
   def index
-    @participations = Participation.order(created_at: :desc).page(params[:page] || 1).per(params[:per_page] || 20)
+    @participations = Participation.order(created_at: :desc).page(page).per(per_page)
   end
 
   def new

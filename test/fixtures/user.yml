@@ -1,27 +1,22 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 DEFAULTS: &DEFAULTS
-  name: name_$LABEL
-  login: $LABEL
   active: true
+  login: $LABEL
+  name: name_$LABEL
+  password_digest: <%= BCrypt::Password.create('testpassword', cost: 5) %>
+  role: editor
 
 admin:
   <<: *DEFAULTS
-  role: 0
-  password_digest: <%= BCrypt::Password.create('testpassword', cost: 5) %>
+  role: admin
 
 editor:
   <<: *DEFAULTS
-  role: 1
-  password_digest: <%= BCrypt::Password.create('testpassword', cost: 5) %>
 
 one:
   <<: *DEFAULTS
-  role: 1
-  password_digest: <%= BCrypt::Password.create('testpassword', cost: 5) %>
 
 incactive:
   <<: *DEFAULTS
   active: false
-  role: 1
-  password_digest: <%= BCrypt::Password.create('testpassword', cost: 5) %>

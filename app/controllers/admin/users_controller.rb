@@ -5,11 +5,11 @@ module Admin
     before_action -> { check_authorization(:admin) }
 
     def index
-      @entries = User.active.order(:login).page(params[:page] || 1).per(params[:per_page] || 20)
+      @entries = User.active.order(:login).page(page).per(per_page)
     end
 
     def new
-      @entry = User.new(params[:entry])
+      @entry = User.new
     end
 
     def edit
@@ -17,7 +17,7 @@ module Admin
     end
 
     def create
-      @entry = User.new entry_params
+      @entry = User.new(entry_params)
       if @entry.save
         if params[:save_and_close].present?
           redirect_to action: :index
@@ -46,8 +46,7 @@ module Admin
     private
 
     def entry_params
-      e_params = params.require(:user)
-      e_params.permit(:name, :login, :password, :password_confirmation, :role)
+      params.require(:user).permit(:name, :login, :password, :password_confirmation, :role)
     end
   end
 end

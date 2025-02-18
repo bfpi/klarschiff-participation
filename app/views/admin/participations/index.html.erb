@@ -7,7 +7,7 @@
     <thead>
       <tr>
         <% %i[id partner_number status authority_name authority_address authority_email contact_name contact_email
-              contact_phone created_at].each do |col| %>
+              contact_phone created_at].each do |col| -%>
           <th scope="col"><%= Participation.human_attribute_name col %></th>
         <% end -%>
         <th scope="col" class="actions"><%= t('actions') %></th>
@@ -19,7 +19,7 @@
           <th scope="row"><%= entry.id %></th>
           <td><%= entry.partner_number %></td>
           <td><%= Participation.human_enum_name :status, entry.status %></td>
-          <% %i[authority_name authority_address authority_email contact_name contact_email contact_phone].each do |col| %>
+          <% %i[authority_name authority_address authority_email contact_name contact_email contact_phone].each do |col| -%>
             <td><%= entry.send(col) %></td>
           <% end -%>
           <td><%= l(entry.created_at) %></td>

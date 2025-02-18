@@ -6,7 +6,7 @@
           Login
         </div>
         <div class="card-body">
-          <%= form_for :login, url: admin_logins_path do |f| -%>
+          <%= form_for :login, url: admin_logins_path do |f| %>
             <div class="mb-3">
               <%= f.label :login, 'Login *' %>
               <%= f.text_field :login, class: 'form-control' %>

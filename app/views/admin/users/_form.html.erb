@@ -1,14 +1,14 @@
 <%= render partial: 'form_buttons', locals: { form: } %>
 
-<% if entry.errors.any? %>
+<% if entry.errors.any? -%>
   <div class="alert alert-danger">
     <ul class="list-unstyled mb-0">
-      <% entry.errors.full_messages.each do |msg| %>
+      <% entry.errors.full_messages.each do |msg| -%>
         <li><%= msg %></li>
-      <% end %>
+      <% end -%>
     </ul>
   </div>
-<% end %>
+<% end -%>
 
 <div class="row">
   <%= form.label :role, class: 'col-3 col-form-label' %>

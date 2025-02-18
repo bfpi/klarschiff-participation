@@ -3,7 +3,7 @@
 module Admin
   class ParticipationsController < AdminController
     def index
-      @participations = Participation.order(created_at: :desc).page(params[:page] || 1).per(params[:per_page] || 20)
+      @participations = Participation.order(created_at: :desc).page(page).per(per_page)
     end
 
     def edit

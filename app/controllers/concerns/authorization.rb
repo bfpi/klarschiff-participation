@@ -16,9 +16,14 @@ module Authorization
   end
 
   def authorized?(role)
-    return Current.user.present? if role.blank?
-    return Current.user.role_admin? if role == :admin
-
-    false
+    case role
+    when nil
+      Current.user.present?
+    when :admin
+      Current.user.role_admin?
+    else
+      Rails.logger.error "Unknown role '#{role}' for authorization requested!"
+      false
+    end
   end
 end
