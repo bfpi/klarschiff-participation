@@ -111,7 +111,7 @@ module Logging
   end
 
   def self.convert_value(value, attr, subject)
-    return subject.human_enum_name(attr, value) if attr.in?(subject.defined_enums.keys)
+    return subject.class.human_enum_name(attr, value) if attr.in?(subject.defined_enums.keys)
     return ActiveSupport::NumberHelper.number_to_delimited(value) if value.is_a?(Numeric)
     return I18n.l(value) if value.is_a?(Date) || value.is_a?(ActiveSupport::TimeWithZone)
 
