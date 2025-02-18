@@ -29,7 +29,7 @@ module Admin
       attributes = %i[authority_name authority_address authority_email contact_name contact_email contact_phone
                       partner_number name_of_the_signatory official_email_authority effectiveness_date
                       withdrawal_receipt_date withdrawal_name_of_the_signatory withdrawal_effectiveness_date
-                      withdrawal_effectiveness_date_corrected]
+                      withdrawal_effectiveness_date_corrected status role]
       return attributes unless Current.user.role_admin?
 
       attributes << %i[leading_cooperation_partner_name leading_cooperation_partner_address

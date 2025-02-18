@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   scope Rails.application.config.relative_url_root || '/' do
-    resources :participations, only: %i[new create]
+    resources :participations, only: %i[index new create]
 
     namespace :admin do
       resource :logins, only: %i[new create destroy]

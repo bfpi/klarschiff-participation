@@ -1,0 +1,32 @@
+<div class="container">
+  <h1><%= Participation.model_name.human(count: 2) %></h1>
+
+  <%= paginate @participations %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <% %i[partner_number authority_name name_of_the_signatory role effectiveness_date withdrawal_effectiveness_date
+              withdrawal_receipt_date].each do |col| %>
+          <th scope="col"><%= Participation.human_attribute_name col %></th>
+        <% end -%>
+      </tr>
+    </thead>
+    <tbody>
+      <% @participations.each do |entry| -%>
+        <tr>
+          <th scope="row"><%= entry.partner_number %></th>
+          <% %i[authority_name name_of_the_signatory].each do |col| %>
+            <td><%= entry.send(col) %></td>
+          <% end -%>
+          <td><%= Participation.human_enum_name(:role, entry.role) if entry.role %></td>
+          <% %i[effectiveness_date withdrawal_effectiveness_date withdrawal_receipt_date].each do |col| %>
+            <td><%= l(entry.send(col)) if entry.send(col).present? %></td>
+          <% end -%>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+
+  <%= paginate @participations %>
+</div>

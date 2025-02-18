@@ -4,6 +4,10 @@ class ParticipationsController < ApplicationController
   skip_before_action :authenticate
   invisible_captcha only: :create, honeypot: :subtitle
 
+  def index
+    @participations = Participation.order(created_at: :desc).page(params[:page] || 1).per(params[:per_page] || 20)
+  end
+
   def new
     @participation = Participation.new
   end
