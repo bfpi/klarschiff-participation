@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class UsersControllerControllerTest < ActionDispatch::IntegrationTest
+class AdminUsersControllerControllerTest < ActionDispatch::IntegrationTest
   test 'authorized index for admin' do
     login username: 'admin'
     get '/admin/users'

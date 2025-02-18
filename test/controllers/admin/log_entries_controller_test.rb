@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class LogEntriesControllerTest < ActionDispatch::IntegrationTest
+class AdminLogEntriesControllerTest < ActionDispatch::IntegrationTest
   test 'authorized index as admin' do
     login username: 'admin'
     get '/admin/log_entries'

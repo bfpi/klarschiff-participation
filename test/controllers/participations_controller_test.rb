@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class ParticipationsControllerControllerTest < ActionDispatch::IntegrationTest
-  test 'authorized index for admin' do
+  test 'index for participations list' do
     get '/participations'
 
     assert_response :success
