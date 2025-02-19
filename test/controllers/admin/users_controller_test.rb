@@ -73,10 +73,10 @@ module Admin
     test 'authorized update for admin' do
       login username: 'admin'
       patch "/admin/users/#{user(:one).id}",
-        params: { user: { name: 'Update Test' } }
+            params: { user: { name: 'Update Test' } }
 
-        assert_redirected_to edit_admin_user_path(user(:one))
-        assert_equal 'Update Test', user(:one).reload.name
+      assert_redirected_to edit_admin_user_path(user(:one))
+      assert_equal 'Update Test', user(:one).reload.name
     end
 
     def create_params

@@ -40,9 +40,9 @@ module Admin
     test 'authorized update for admin' do
       login username: 'admin'
       patch "/admin/participations/#{participation(:one).id}",
-        params: { participation: { authority_name: 'Update Test' } }
+            params: { participation: { authority_name: 'Update Test' } }
 
-        assert_equal 'Update Test', participation(:one).reload.authority_name
+      assert_equal 'Update Test', participation(:one).reload.authority_name
     end
 
     test 'unauthorized to update leading_cooperation_partner for editor' do
