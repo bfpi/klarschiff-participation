@@ -2,14 +2,9 @@ de:
   'false': Nein
   'true': Ja
 
-  actions: Aktion
-  new: anlegen
-  edit: bearbeiten
-
-  attributes:
-    created_at: Zeitstempel
-    id: ID
-    user: Benutzer
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M:%S"
 
   activerecord:
     attributes:
@@ -23,7 +18,7 @@ de:
         authority_address: Anschrift
         authority_email: E-Mail
         authority: Informationen zur Behörde
-        authority_name: Bezeichnung 
+        authority_name: Bezeichnung
         contact_email: E-Mail
         contact: Informationen zur Ansprechperson für %{name}
         contact_name: Name
@@ -52,6 +47,13 @@ de:
       log_entry: Verlauf
       participation: Partner
       user: Benutzer
+
+  attributes:
+    active: Aktiv
+    created_at: Zeitstempel
+    id: ID
+    user: Benutzer
+
   enums:
     participation:
       role:
@@ -70,31 +72,45 @@ de:
         admin: Administrator
         editor: Bearbeiter
 
-  action:
+  actions:
     abort: Abbrechen
     confirm_delete: Soll wirklich gelöscht werden?
+    logout: Logout
     new: Neuer Datensatz
     save: Speichern
     save_and_close: Speichern & Schließen
+    submit: Absenden
+    title: Aktion
+
   admin:
     logins:
       empty_parameter: Login und Passwort müssen angegeben werden.
       login_incorrect: Login oder Passwort sind nicht korrekt.
+      new:
+        title: Login
     participations:
-      form:
-        toggle_all: Alles öffnen/schließen
+      edit:
+        title: Partner bearbeiten
+    users:
+      edit:
+        title: Benutzer bearbeiten
+      new:
+        title: Benutzer anlegen
+
   errors:
     messages:
       invalid_date: ist kein gültiges Datum
 
-  back: Zurück
-  imprint: Impressum
-  pagetitle: "Interessenbekundung zur Teilnahme an %{name}"
-  privacy: Datenschutz
-  privacy_policy_html: "Ich habe die <strong><a href=\"%{url}\" target=\"_blank\">Datenschutzerklärung</a></strong> nach der EU-DSGVO zur Kenntnis genommen und stimme der Verarbeitung meiner persönlichen Daten zu."
-  submit: Absenden
-  success: Erfolgreich gespeichert
-  success_message: Vielen Dank für Ihr Interesse an der Teilnahme am %{name}.
-  time:
-    formats:
-      default: "%d.%m.%Y %H:%M:%S"
+  layouts:
+    application:
+      imprint: Impressum
+
+  participations:
+    new:
+      title: Interessenbekundung zur Teilnahme an Klarschiff-MV
+      privacy_policy_html: |
+        Ich habe die <strong><a href="%{url}" target="_blank">Datenschutzerklärung</a></strong> nach der EU-DSGVO
+        zur Kenntnis genommen und stimme der Verarbeitung meiner persönlichen Daten zu.
+    create:
+      title: Erfolgreich gespeichert
+      message: Vielen Dank für Ihr Interesse zur Teilnahme an Klarschiff-MV

@@ -1,5 +1,4 @@
-
-<h2 class="text-center mb-4"><%= t('pagetitle', name: Settings::Client.name) %></h2>
+<h1 class="text-center mb-4"><%= t('.title') %></h1>
 
 <%= form_for @participation, data: { turbo: false } do |form| %>
   <%= form.invisible_captcha :subtitle %>
@@ -8,10 +7,10 @@
   <div class="form-check mb-3">
     <%= form.check_box :privacy_policy_accepted, class: 'form-check-input' %>
     <%= form.label :privacy_policy_accepted, class: 'form-check-label' do %>
-      <%= t :privacy_policy_html, url: Settings::Url.external_privacy_url %>
+      <%= t('.privacy_policy_html', url: Settings::Url.external_privacy_url) %>
     <% end -%>
     <%= show_error_messages @participation, :privacy_policy_accepted %>
   </div>
 
-  <%= form.submit t(:submit), class: 'btn btn-primary' %>
+  <%= form.submit t('actions.submit'), class: 'btn btn-primary' %>
 <% end -%>

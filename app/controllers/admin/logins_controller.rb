@@ -19,7 +19,7 @@ module Admin
 
     def destroy
       session[:login] = nil
-      redirect_to new_admin_logins_path, status: :unauthorized
+      redirect_to new_admin_logins_path
     end
 
     private
