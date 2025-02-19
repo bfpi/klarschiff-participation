@@ -13,9 +13,14 @@ module Admin
     private
 
     def order
-      return super unless order_params[:column] == 'user'
-
-      [user_arel_table[:last_name].send(order_dir), user_arel_table[:first_name].send(order_dir)]
+      case order_params[:column]
+      when 'user'
+        [User.arel_table[:name].send(order_dir), LogEntry.arel_table[:created_at].send(order_dir)]
+      when 'created_at'
+        LogEntry.arel_table[:created_at].send order_dir
+      else
+        super
+      end
     end
   end
 end

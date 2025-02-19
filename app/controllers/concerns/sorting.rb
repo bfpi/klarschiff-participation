@@ -14,7 +14,7 @@ module Sorting
   end
 
   def order
-    order_params[:column] || :created_at => order_dir
+    { (order_params[:column] || :created_at).to_sym => order_dir }
   end
 
   def order_dir
