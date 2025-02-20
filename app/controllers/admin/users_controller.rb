@@ -17,7 +17,7 @@ module Admin
     end
 
     def create
-      @entry = User.new(entry_params)
+      @entry = User.new({ active: true }.merge(entry_params))
       if @entry.save
         if params[:save_and_close].present?
           redirect_to action: :index
