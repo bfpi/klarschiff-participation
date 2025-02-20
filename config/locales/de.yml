@@ -18,10 +18,10 @@ de:
         authority_address: Anschrift
         authority_email: E-Mail
         authority: Informationen zur Behörde
-        authority_name: Bezeichnung
+        authority_name: Bezeichnung (Behörde)
         contact_email: E-Mail
         contact: Informationen zur Ansprechperson für %{name}
-        contact_name: Name
+        contact_name: Name (Ansprechpartner)
         contact_phone: Telefon
         leading_cooperation_partner: Federführender Kooperationspartner
         leading_cooperation_partner_name: Bezeichnung
