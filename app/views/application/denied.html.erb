@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="alert alert-danger" role="alert">
+    <%= t('activerecord.errors.authorization_error') %>
+  </div>
+</div>
+
+<% content_for(:footer) do -%>
+  <%= link_to(t('action.back'), 'javascript:history.back();', role: :button,
+                                                              class: 'btn btn-secondary btn-primary float-end') %>
+<% end -%>

@@ -13,4 +13,4 @@ jobs:
         with:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Run ERB Lint
-        run: bin/erblint
+        run: bin/erb_lint

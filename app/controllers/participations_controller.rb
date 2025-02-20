@@ -1,15 +1,18 @@
 # frozen_string_literal: true
 
 class ParticipationsController < ApplicationController
-  skip_before_action :authenticate
   invisible_captcha only: :create, honeypot: :subtitle
+
+  def index
+    @participations = Participation.order(created_at: :desc).page(page).per(per_page)
+  end
 
   def new
     @participation = Participation.new
   end
 
   def create
-    @participation = Participation.new(permitted_params)
+    @participation = Participation.new({ status: :interested }.merge(permitted_params))
 
     return if @participation.save
 

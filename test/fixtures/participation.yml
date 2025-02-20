@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+DEFAULTS: &DEFAULTS
+  authority_name: authority_name_$LABEL
+  authority_address: authority_address_$LABEL
+  authority_email: authority_email_$LABEL@example.com
+  contact_name: contact_name_$LABEL
+  contact_email: contact_email_$LABEL@example.com
+  contact_phone: contact_phone_$LABEL
+  leading_cooperation_partner_name: ''
+  leading_cooperation_partner_address: ''
+  leading_cooperation_partner_email: ''
+
+one:
+  <<: *DEFAULTS

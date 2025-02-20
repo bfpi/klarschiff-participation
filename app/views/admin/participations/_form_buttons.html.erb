@@ -1,0 +1,5 @@
+<div class="row mb-3">
+  <%= form.submit t('actions.save'), class: 'btn btn-primary offset-3 col-2' %>
+  <%= form.submit t('actions.save_and_close'), name: :save_and_close, class: 'btn btn-primary offset-1 col-2' %>
+  <%= link_to t('actions.abort'), admin_participations_path, class: 'btn btn-secondary offset-1 col-2' %>
+</div>

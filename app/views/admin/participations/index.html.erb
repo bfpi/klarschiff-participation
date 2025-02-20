@@ -1,23 +1,36 @@
+<div class="container">
+  <h1><%= Participation.model_name.human(count: 2) %></h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col"><%= Participation.human_attribute_name :id %></th>
-      <% %i[authority_name authority_address authority_email contact_name contact_email contact_phone].each do |col| %>
-        <th scope="col"><%= Participation.human_attribute_name :authority_name %></th>
-      <% end -%>
-      <th scope="col"><%= Participation.human_attribute_name :created_at %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @participations.each do |entry| -%>
+  <%= paginate @participations %>
+
+  <table class="table">
+    <thead>
       <tr>
-        <th scope="row"><%= entry.id %></th>
-        <% %i[authority_name authority_address authority_email contact_name contact_email contact_phone].each do |col| %>
-          <td><%= entry.send(col) %></td>
+        <% %i[id partner_number status authority_name authority_address authority_email contact_name contact_email
+              contact_phone created_at].each do |col| -%>
+          <th scope="col"><%= Participation.human_attribute_name col %></th>
         <% end -%>
-        <td><%= l(entry.created_at) %></td>
+        <th scope="col" class="actions"><%= t('actions.title') %></th>
       </tr>
-    <% end -%>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @participations.each do |entry| -%>
+        <tr>
+          <th scope="row"><%= entry.id %></th>
+          <td><%= entry.partner_number %></td>
+          <td><%= Participation.human_enum_name :status, entry.status %></td>
+          <% %i[authority_name authority_address authority_email contact_name contact_email contact_phone].each do |col| -%>
+            <td><%= entry.send(col) %></td>
+          <% end -%>
+          <td><%= l(entry.created_at) %></td>
+          <td class="actions">
+            <%= link_to content_tag(:i, '', class: 'fa fa-pencil'), edit_admin_participation_path(entry),
+                        class: 'btn btn-sm btn-outline-primary' %>
+          </td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+
+  <%= paginate @participations %>
+</div>

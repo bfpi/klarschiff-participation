@@ -1,0 +1,7 @@
+<div class="container">
+  <h1><%= t('.title') %></h1>
+
+  <%= form_for(@entry, url: admin_participation_path(@entry), data: { turbo: false }) do |f| %>
+    <%= render(partial: 'form', locals: { form: f, entry: @entry }) %>
+  <% end -%>
+</div>

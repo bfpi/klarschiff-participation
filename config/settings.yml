@@ -1,0 +1,19 @@
+development: &default
+  url:
+    imprint: https://www.klarschiff-mv.de/static/imprint
+    external_privacy_url: https://www.regierung-mv.de/Datenschutz/
+
+  client:
+    name: Klarschiff-MV
+
+test:
+  <<: *default
+
+alpha:
+  <<: *default
+
+consolidation:
+  <<: *default
+
+production:
+  <<: *default

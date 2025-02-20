@@ -1,0 +1,47 @@
+<%= render partial: 'form_buttons', locals: { form: } %>
+
+<% if entry.errors.any? -%>
+  <div class="alert alert-danger">
+    <ul class="list-unstyled mb-0">
+      <% entry.errors.full_messages.each do |msg| -%>
+        <li><%= msg %></li>
+      <% end -%>
+    </ul>
+  </div>
+<% end -%>
+
+<div class="row">
+  <%= form.label :role, class: 'col-3 col-form-label' %>
+  <div class="col">
+    <% User.roles.each do |role, ix| -%>
+      <div class="form-check">
+        <%= form.label "role_#{role}", '', class: 'form-check-label' do %>
+          <%= form.radio_button :role, role %>
+          <%= User.human_enum_name :role, role %>
+        <% end -%>
+      </div>
+    <% end -%>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <%= form.label(:name, class: 'col-form-label col-3') %>
+  <%= form.text_field(:name, class: 'form-control col') %>
+</div>
+
+<div class="row mb-3">
+  <%= form.label(:login, class: 'col-form-label col-3') %>
+  <%= form.text_field(:login, class: 'form-control col') %>
+</div>
+
+<div class="row mb-3">
+  <%= form.label :password, class: 'col-form-label col-3' %>
+  <%= form.password_field :password, class: 'form-control col' %>
+</div>
+
+<div class="row mb-3">
+  <%= form.label :password_confirmation, class: 'col-form-label col-3' %>
+  <%= form.password_field :password_confirmation, class: 'form-control col' %>
+</div>
+
+<%= render partial: 'form_buttons', locals: { form: } %>
