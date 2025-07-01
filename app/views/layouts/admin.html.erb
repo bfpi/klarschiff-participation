@@ -32,6 +32,20 @@
                     <%= link_to LogEntry.model_name.human(count: 2), admin_log_entries_path, class: 'nav-link' %>
                   </li>
                 <% end -%>
+
+                <% if Current.user.role_admin? %>
+                  <li class="nav-item dropdown">
+                    <%= link_to t('nav.administration'), '#',
+                                class: 'nav-link dropdown-toggle', 'data-bs-toggle': 'dropdown' %>
+                    <div class="dropdown-menu">
+                      <%= link_to MasterData.model_name.human(count: 2), edit_admin_master_data_path,
+                                  class: 'dropdown-item' %>
+                      <%= link_to 'E-Mail-Templates / Vorschau', rails_mailers_path,
+                                  target: :_blank, rel: 'noopener', class: 'dropdown-item' %>
+                    </div>
+                  </li>
+                <% end -%>
+
               <% end -%>
             </ul>
             <% unless Rails.env.production? -%>
