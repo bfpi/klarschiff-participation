@@ -77,20 +77,105 @@
 <div class="card mb-4">
   <div class="card-body">
     <h3 class="card-title">
+      <%= Participation.human_attribute_name :regional_admin, name: Settings::Client.name %>
+    </h3>
+
+    <div class="mb-2 row">
+      <%= form.label :ra_name, class: 'col-2 col-form-label' %>
+      <div class="col">
+        <%= form.text_field :ra_name, class: 'form-control' %>
+        <%= show_error_messages form.object, :ra_name %>
+      </div>
+    </div>
+
+    <div class="mb-2 row">
+      <%= form.label :ra_email, class: 'col-2 col-form-label' %>
+      <div class="col">
+        <%= form.text_field :ra_email, class: 'form-control' %>
+        <%= show_error_messages form.object, :ra_email %>
+      </div>
+    </div>
+
+    <div class="mb-2 row">
+      <%= form.label :ra_phone, class: 'col-2 col-form-label' %>
+      <div class="col">
+        <%= form.text_field :ra_phone, class: 'form-control' %>
+        <%= show_error_messages form.object, :ra_phone %>
+      </div>
+    </div>
+
+    <div class="mb-2 row">
+      <div class="col-10 offset-2">
+        <div class="form-check">
+          <%= form.label :ra_active, '', class: 'form-check-label' do %>
+            <%= form.check_box :ra_active %>
+            <%= Participation.human_attribute_name :ra_active %>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-2 row">
+      <%= form.label :ra_activate_date, class: 'col-2 col-form-label' %>
+      <div class="col">
+        <%= form.date_field :ra_activate_date, class: 'form-control' %>
+        <%= show_error_messages form.object, :ra_activate_date %>
+      </div>
+    </div>
+
+    <div class="mb-2 row">
+      <div class="col-10 offset-2">
+        <div class="form-check">
+          <%= form.label :ra_trained, '', class: 'form-check-label' do %>
+            <%= form.check_box :ra_trained %>
+            <%= Participation.human_attribute_name :ra_trained %>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-2 row">
+      <%= form.label :ra_train_date, class: 'col-2 col-form-label' %>
+      <div class="col">
+        <%= form.date_field :ra_train_date, class: 'form-control' %>
+        <%= show_error_messages form.object, :ra_train_date %>
+      </div>
+    </div>
+
+    <div class="mb-2 row">
+      <%= form.label :ra_training, class: 'col-2 col-2 col-form-label' %>
+      <div class="col">
+        <% Participation.ra_trainings.each do |ra_training, ix| -%>
+          <div class="form-check">
+            <%= form.label "ra_training_#{ra_training}", '', class: 'form-check-label' do %>
+              <%= form.radio_button :ra_training, ra_training %>
+              <%= Participation.human_enum_name :ra_training, ra_training %>
+            <% end -%>
+          </div>
+        <% end -%>
+      </div>
+    </div>
+
+    <div class="mb-2 row">
+      <%= form.label :ra_note, class: 'col-2 col-form-label' %>
+      <div class="col">
+        <%= form.text_area :ra_note, class: 'form-control' %>
+        <%= show_error_messages form.object, :ra_note %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h3 class="card-title">
       <%= Participation.human_attribute_name :partner %>
     </h3>
 
     <div class="mb-2 row">
       <%= form.label :status, class: 'col-2 col-form-label' %>
       <div class="col">
-        <% Participation.statuses.each do |status, ix| -%>
-          <div class="form-check">
-            <%= form.label "status_#{status}", '', class: 'form-check-label' do %>
-              <%= form.radio_button :status, status %>
-              <%= Participation.human_enum_name :status, status %>
-            <% end -%>
-          </div>
-        <% end -%>
+        <%= Participation.human_enum_name :status, form.object.status %>
       </div>
     </div>
 
@@ -173,39 +258,5 @@
     </div>
   </div>
 </div>
-
-<% if Current.user.role_admin? -%>
-  <div class="card mb-4">
-    <div class="card-body">
-      <h3 class="card-title">
-        <%= Participation.human_attribute_name :leading_cooperation_partner %>
-      </h3>
-
-      <div class="mb-2 row">
-        <%= form.label :leading_cooperation_partner_name, class: 'col-2 col-form-label' %>
-        <div class="col">
-          <%= form.text_field :leading_cooperation_partner_name, class: 'form-control' %>
-          <%= show_error_messages form.object, :leading_cooperation_partner_name %>
-        </div>
-      </div>
-
-      <div class="mb-2 row">
-        <%= form.label :leading_cooperation_partner_address, class: 'col-2 col-form-label' %>
-        <div class="col">
-          <%= form.text_area :leading_cooperation_partner_address, class: 'form-control' %>
-          <%= show_error_messages form.object, :leading_cooperation_partner_address %>
-        </div>
-      </div>
-
-      <div class="row">
-        <%= form.label :leading_cooperation_partner_email, class: 'col-2 col-form-label' %>
-        <div class="col">
-          <%= form.text_field :leading_cooperation_partner_email, class: 'form-control' %>
-          <%= show_error_messages form.object, :leading_cooperation_partner_email %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end -%>
 
 <%= render partial: 'form_buttons', locals: { form: } %>

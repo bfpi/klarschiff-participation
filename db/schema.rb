@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_09_15_064239) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_15_064239) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
@@ -80,6 +80,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_15_064239) do
     t.index ["user_id"], name: "index_log_entries_on_user_id"
   end
 
+  create_table "master_data", force: :cascade do |t|
+    t.string "leading_cooperation_partner_name"
+    t.string "leading_cooperation_partner_address"
+    t.string "leading_cooperation_partner_email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "participations", force: :cascade do |t|
     t.string "authority_name"
     t.string "authority_address"
@@ -99,10 +107,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_15_064239) do
     t.string "withdrawal_name_of_the_signatory"
     t.date "withdrawal_effectiveness_date"
     t.date "withdrawal_effectiveness_date_corrected"
-    t.string "leading_cooperation_partner_name"
-    t.string "leading_cooperation_partner_address"
-    t.string "leading_cooperation_partner_email"
     t.boolean "active", default: true, null: false
+    t.uuid "activity_token"
+    t.string "ra_name"
+    t.string "ra_email"
+    t.string "ra_phone"
+    t.text "ra_note"
+    t.boolean "ra_active", default: false, null: false
+    t.date "ra_activate_date"
+    t.boolean "ra_trained", default: false, null: false
+    t.date "ra_train_date"
+    t.integer "ra_training"
   end
 
   create_table "users", force: :cascade do |t|

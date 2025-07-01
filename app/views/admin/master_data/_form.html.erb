@@ -1,0 +1,45 @@
+<%= render partial: 'form_buttons', locals: { form: } %>
+
+<% if entry.errors.any? -%>
+  <div class="alert alert-danger">
+    <ul class="list-unstyled mb-0">
+      <% entry.errors.full_messages.each do |msg| -%>
+        <li><%= msg %></li>
+      <% end -%>
+    </ul>
+  </div>
+<% end -%>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h3 class="card-title">
+      <%= MasterData.human_attribute_name :leading_cooperation_partner %>
+    </h3>
+
+    <div class="mb-2 row">
+      <%= form.label :leading_cooperation_partner_name, class: 'col-2 col-form-label' %>
+      <div class="col">
+        <%= form.text_field :leading_cooperation_partner_name, class: 'form-control' %>
+        <%= show_error_messages form.object, :leading_cooperation_partner_name %>
+      </div>
+    </div>
+
+    <div class="mb-2 row">
+      <%= form.label :leading_cooperation_partner_address, class: 'col-2 col-form-label' %>
+      <div class="col">
+        <%= form.text_area :leading_cooperation_partner_address, class: 'form-control' %>
+        <%= show_error_messages form.object, :leading_cooperation_partner_address %>
+      </div>
+    </div>
+
+    <div class="row">
+      <%= form.label :leading_cooperation_partner_email, class: 'col-2 col-form-label' %>
+      <div class="col">
+        <%= form.text_field :leading_cooperation_partner_email, class: 'form-control' %>
+        <%= show_error_messages form.object, :leading_cooperation_partner_email %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render partial: 'form_buttons', locals: { form: } %>

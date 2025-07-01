@@ -1,0 +1,19 @@
+KOOPERATIONSVEREINBARUNG ÜBER DIE GEMEINSAME ZUSAMMENARBEIT BEI DER NUTZUNG UND WEITERENTWICKLUNG
+DER LANDESLÖSUNG „KLARSCHIFF-MV"
+
+Hier: Bestätigung des Eingangs der Austrittserklärung
+
+Sehr geehrte Damen und Herren,
+
+Ihre Austrittserklärung ist am <%= l(@participation.withdrawal_receipt_date) %> beim federführenden Kooperationspartner eingegangen.
+Der Austritt wird nach Teil 2 § 7 Absatz 6 o. g. Verwaltungsvereinbarung zum
+<%= l(@participation.withdrawal_effectiveness_date_corrected || @participation.withdrawal_effectiveness_date) %> wirksam.
+Die anderen Kooperationspartner wurden durch eine entsprechende Aktualisierung und Neuveröffentlichung
+der Übersicht (Anlage 1) gemäß Teil 2 § 7Absatz 6 der oben genannten Vereinbarung über Ihre
+Austrittserklärung informiert.
+
+Mit freundlichen Grüßen
+
+<%= MasterData.first.leading_cooperation_partner_name %>
+<%= MasterData.first.leading_cooperation_partner_address %>
+<%= MasterData.first.leading_cooperation_partner_email %>

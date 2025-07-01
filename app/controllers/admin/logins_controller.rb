@@ -33,7 +33,7 @@ module Admin
     end
 
     def permitted_params
-      params.require(:login).permit(:login, :password)
+      params.expect(login: %i[login password])
     end
   end
 end

@@ -45,38 +45,8 @@ module Admin
       assert_equal 'Update Test', participation(:one).reload.authority_name
     end
 
-    test 'unauthorized to update leading_cooperation_partner for editor' do
-      login username: 'editor'
-      patch "/admin/participations/#{participation(:one).id}", params: update_params
-
-      reloaded = participation(:one).reload
-
-      assert_empty reloaded.leading_cooperation_partner_name
-      assert_empty reloaded.leading_cooperation_partner_address
-      assert_empty reloaded.leading_cooperation_partner_email
-    end
-
-    test 'authorized to update leading_cooperation_partner for admin' do
-      login username: 'admin'
-      patch "/admin/participations/#{participation(:one).id}", params: update_params
-
-      reloaded = participation(:one).reload
-
-      assert_equal 'Update Test',  reloaded.leading_cooperation_partner_name
-      assert_equal 'Update Test',  reloaded.leading_cooperation_partner_address
-      assert_equal 'UpdateTest@example.com', reloaded.leading_cooperation_partner_email
-    end
-
     def create_params
       { participation: { authority_name: 'Test', authority_address: 'test' } }
-    end
-
-    def update_params
-      { participation: {
-        leading_cooperation_partner_name: 'Update Test',
-        leading_cooperation_partner_address: 'Update Test',
-        leading_cooperation_partner_email: 'UpdateTest@example.com'
-      } }
     end
   end
 end

@@ -1,0 +1,53 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h3 class="card-title"><%= t('.title') %></h3>
+
+    <%= form_for @participation, url: joining_create_path, data: { turbo: false } do |form| %>
+      <div class="row mb-3">
+        <div class="col-3">
+          <%= t('.authority') %>
+        </div>
+        <div class="col-9">
+          <%= @participation.authority_name %>
+          <br>
+          <%= @participation.authority_address %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-3">
+          <%= t('.leading_cooperation_partner') %>
+        </div>
+        <div class="col-9">
+          <%= MasterData.first.leading_cooperation_partner_name %>
+          <br>
+          <%= MasterData.first.leading_cooperation_partner_address %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <%= t('.text_html', authority_name: @participation.authority_name,
+                              authority_address: @participation.authority_address) %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-3">
+          <%= Participation.human_attribute_name(:place_of_signature) %>
+        </div>
+        <div class="col-9">
+          <%= form.text_field :place_of_signature, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-3">
+          <%= Participation.human_attribute_name(:withdrawal_name_of_the_signatory) %>
+        </div>
+        <div class="col-9">
+          <%= form.text_field :withdrawal_name_of_the_signatory, class: 'form-control' %>
+        </div>
+      </div>
+
+      <%= form.hidden_field :activity_token %>
+      <%= form.submit t('actions.submit'), class: 'btn btn-primary' %>
+    <% end -%>
+  </div>
+</div>
