@@ -1,0 +1,12 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+user_entry:
+  action: Benutzer geändert
+  attr: user
+  created_at: <%= 12.hours.ago %>
+  new_value: Benutzer Test
+  old_value:
+  subject_id: <%= ActiveRecord::FixtureSet.identify :delegated %>
+  subject_name: Test
+  table: issue
+  user: one

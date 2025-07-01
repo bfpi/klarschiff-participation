@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= t('pagetitle', name: Settings::Client.name) %></title>
+    <title><%= t('participations.new.title') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -31,10 +31,7 @@
               <%= yield :nav %>
             </div>
             <div class="col-7 text-end">
-              <% if Current.user -%>
-                <%= link_to(t(:logout), logins_path, method: :delete) %> |
-              <% end -%>
-              <%= link_to t(:imprint), Settings::Url.imprint %>
+              <%= link_to t('.imprint'), Settings::Url.imprint %>
             </div>
           </div>
         </div>

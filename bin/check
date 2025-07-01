@@ -3,5 +3,5 @@
 bin/rubocop
 bin/eslint
 bin/coffeelint
-bin/erblint
+bin/erb_lint
 bin/brakeman
