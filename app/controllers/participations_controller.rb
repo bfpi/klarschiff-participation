@@ -22,7 +22,7 @@ class ParticipationsController < ApplicationController
   private
 
   def permitted_params
-    params.require(:participation).permit(:authority_name, :authority_address, :authority_email, :contact_name,
-                                          :contact_email, :contact_phone, :privacy_policy_accepted)
+    params.expect(participation: %i[authority_name authority_address authority_email contact_name
+                                    contact_email contact_phone privacy_policy_accepted])
   end
 end

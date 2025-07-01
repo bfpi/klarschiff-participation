@@ -14,6 +14,11 @@ de:
         old_value: Wert neu
         subject_id: Datensatz
         subject_name: Datensatz
+      master_data:
+        leading_cooperation_partner: Federführender Kooperationspartner
+        leading_cooperation_partner_name: Bezeichnung
+        leading_cooperation_partner_address: Anschrift
+        leading_cooperation_partner_email: E-Mail
       participation:
         authority_address: Anschrift
         authority_email: E-Mail
@@ -23,21 +28,28 @@ de:
         contact: Informationen zur Ansprechperson für %{name}
         contact_name: Name (Ansprechpartner)
         contact_phone: Telefon
-        leading_cooperation_partner: Federführender Kooperationspartner
-        leading_cooperation_partner_name: Bezeichnung
-        leading_cooperation_partner_address: Anschrift
-        leading_cooperation_partner_email: E-Mail
         created_at: Erstellungszeitpunkt
-        privacy_policy_accepted: Datenschutzerklärung
-        partner_number: Partner-Nummer
+        effectiveness_date: Datum der Wirksamkeit
         name_of_the_signatory: Name der unterzeichnenden Person
         official_email_authority: offizielle E-Mail der Behörde
+        partner_number: Partner-Nummer
+        place_of_signature: Ort der Unterzeichnung
+        privacy_policy_accepted: Datenschutzerklärung
+        ra_activate_date: Zeitpunkt der Aktivierung
+        ra_active: aktiviert
+        ra_email: E-Mail
+        ra_name: Name (Regionaladmin)
+        ra_note: Bemerkung
+        ra_phone: Telefon
+        ra_train_date: Zeitpunkt der Schulungsteilnahme
+        ra_trained: geschult
+        ra_training: Schulung
+        regional_admin: Informationen zur Regionaladministration für %{name}
         role: Rolle im KS-Verbund
-        effectiveness_date: Datum der Wirksamkeit
-        withdrawal_receipt_date: Eingangsdatum Austritt
-        withdrawal_name_of_the_signatory: Name der unterzeichnenden Person
-        withdrawal_effectiveness_date: Datum der Wirksamkeit Austritt
         withdrawal_effectiveness_date_corrected: Datum der Wirksamkeit Austritt korrigiert
+        withdrawal_effectiveness_date: Datum der Wirksamkeit Austritt
+        withdrawal_name_of_the_signatory: Name der unterzeichnenden Person
+        withdrawal_receipt_date: Eingangsdatum Austritt
       user:
         password: Passwort
         password_confirmation: Passwortbestätigung
@@ -45,6 +57,7 @@ de:
       authorization_error: Sie besitzen nicht die notwendigen Rechte für diese Aktion!
     models:
       log_entry: Verlauf
+      master_data: Stammdaten
       participation: Partner
       user: Benutzer
 
@@ -56,6 +69,11 @@ de:
 
   enums:
     participation:
+      ra_training:
+        invited: Einladung versendet
+        joined: teilgenommen
+        repeated_invitation: wiederholte Einladung
+        without_reply: ohne Rückantwort
       role:
         procedural_responsibility: Verfahrensverantwortung
         office: Geschäftsstelle
@@ -63,10 +81,18 @@ de:
         steering_committee: Mitglied Steuerungskreis
         product_owner: Product Owner
       status:
-        interested: interessiert
-        prepared: vorbereitet
+        call_back: zurückgerufen
         informed: informiert
+        informed_withdrawal: informiert (Austritt)
+        interested: interessiert
         joined: beigetreten
+        joining: beitretend
+        prepared: vorbereitet
+        provide: bereitgestellt
+        provide_withdrawal: bereitgestellt (Austritt)
+        withdraw: ausgetreten
+        withdrawal: austretend
+        withdrawal_check: austretend (Prüfung)
     user:
       role:
         admin: Administrator
@@ -88,14 +114,43 @@ de:
       login_incorrect: Login oder Passwort sind nicht korrekt.
       new:
         title: Login
+    master_data:
+      edit:
+        title: Stammdaten bearbeiten
     participations:
+      actions:
+        inform: Beitritt auslösen
+        inform_confirm: Soll der Beitritt wirklich auslösen werden?
+        join: Beitritt bestätigen
+        join_confirm: Ist die Bestätigun per E-Mail eingegangen?
+        withdrawal: Austritt auslösen
+        withdrawal_confirm: Soll der Austritt wirklich auslösen werden?
+        withdrawal_check: Austritt empfangen
+        withdrawal_check_confirm: Wurde die Austrittserklärung per E-Mail eingegangen?
+        withdraw: Austritt bestätigen
+        withdraw_confirm: Soll der Austritt wirklich bestätigt werden?
       edit:
         title: Partner bearbeiten
+      inform:
+        confirm: Die Mitteilung zur Beitrittserklärung wurde versendet.
+      join:
+        confirm: Der Beitritt des Kooperationspartners ist abgeschlossen.
+      withdrawal:
+        confirm: Die Mitteilung zur Austrittserklärung wurde versendet.
+      withdrawal_check:
+        confirm: Die Bestätigung zur Austrittserklärung wurde empfangen.
+      withdraw:
+        confirm: Die Austrittserklärung wurde bestätigt.
     users:
       edit:
         title: Benutzer bearbeiten
       new:
         title: Benutzer anlegen
+
+  confirmation:
+    error_message: Die Aktion konnte leider nicht ausgeführt werden. Möglicherweise wurde die Aktion bereits durchgeführt.
+    success:  Aktion Erfolgreich
+    accepted: Ihre Bestätigung wurde akzeptiert.
 
   errors:
     messages:
@@ -104,6 +159,9 @@ de:
   layouts:
     application:
       imprint: Impressum
+
+  nav:
+    administration: Administration
 
   participations:
     new:
@@ -114,3 +172,49 @@ de:
     create:
       title: Erfolgreich gespeichert
       message: Vielen Dank für Ihr Interesse zur Teilnahme an Klarschiff-MV
+
+  joining:
+    confirm:
+      headline: Bereitstellung der Beitrittserklärung
+      text: Wir haben die Beitrittserklärung an die hinterlegte Adresse gesendet.
+    new:
+      title: Beitrittserklärung zum Kooperationsverbund „KLARSCHIFF-MV“
+      authority: 'Von:'
+      leading_cooperation_partner: 'An:'
+      text_html: 'KOOPERATIONSVEREINBARUNG ÜBER DIE GEMEINSAME ZUSAMMENARBEIT BEI DER NUTZUNG UND WEITERENTWICKLUNG DER LANDESLÖSUNG „KLARSCHIFF-MV"<br><br>Hier: BEITRITTSERKLÄRUNG<br><br>Sehr geehrte Damen und Herren,<br><br>hiermit erklärt %{authority_name}, %{authority_address} den Beitritt zu oben genannter Kooperationsvereinbarung und stimmt der Vereinbarung über die Verarbeitung personenbezogener Daten in gemeinsamer Verantwortlichkeit (Art. 26 Datenschutz-Grundverordnung - DSGVO) zu.'
+      submit: E-MAIL-PROGRAMM ZUM ABSENDEN ÖFFNEN
+    create:
+      subject: 'Beitrittserklärung zum Kooperationsverbund „KLARSCHIFF-MV“'
+    reject:
+      headline: Rückruf
+      text: Wir haben den Rückruf Ihrer Interessenbekundung erhalten.
+
+  joining_mailer:
+    informed:
+      subject: 'Klarschiff-MV: Mitteilung zur Beitrittserklärung'
+    provide:
+      subject: 'Klarschiff-MV: Ihre Beitrittserklärung'
+
+  withdrawal:
+    confirm:
+      headline: Bereitstellung der Austrittserklärung
+      text: Wir haben die Austrittserklärung an die hinterlegte Adresse gesendet.
+    create:
+      subject: 'Austrittserklärung aus dem Kooperationsverbund „KLARSCHIFF-MV“'
+    new:
+      title: Austrittserklärung aus dem Kooperationsverbund „KLARSCHIFF-MV“
+      authority: 'Von:'
+      leading_cooperation_partner: 'An:'
+      text_html: 'KOOPERATIONSVEREINBARUNG ÜBER DIE GEMEINSAME ZUSAMMENARBEIT BEI DER NUTZUNG UND WEITERENTWICKLUNG DER LANDESLÖSUNG „KLARSCHIFF-MV"<br><br>Hier: AUSTRITTSERKLÄRUNG<br><br>Sehr geehrte Damen und Herren,<br><br>hiermit erklärt %{authority_name}, %{authority_address} den fristgemäßen Austritt aus der o. g. Kooperationsvereinbarung mit Wirkung zum [TT.MM.JJJJ].<br>Es ist bekannt, dass der Austritt bis spätestens zum 01.03.[JJJJ] vor Beginn einer neuen Haushaltsperiode erfolgen muss. Mit der Wirksamkeit des Austritts werden die Rechte und Pflichten als Kooperationspartner nicht mehr wahrgenommen. Eine Nutzung des Backends der Landeslösung „Klarschiff-MV“ erfolgt dann nicht mehr.'
+      submit: E-MAIL-PROGRAMM ZUM ABSENDEN ÖFFNEN
+    reject:
+      headline: Rückruf
+      text: Wir haben den Rückruf Ihrer Austrittserklärung erhalten.
+
+  withdrawal_mailer:
+    informed_withdrawal:
+      subject: 'Klarschiff-MV: Mitteilung zur Austrittserklärung'
+    provide_withdrawal:
+      subject: 'Klarschiff-MV: Ihre Austrittserklärung'
+    withdraw:
+      subject: 'Klarschiff-MV: Bestätigung der Austrittserklärung'

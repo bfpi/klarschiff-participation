@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class ParticipationsControllerControllerTest < ActionDispatch::IntegrationTest
+class ParticipationsControllerTest < ActionDispatch::IntegrationTest
   test 'index for participations list' do
     get '/participations'
 

@@ -1,0 +1,22 @@
+Guten Tag <%= @participation.contact_name %>,
+
+Sie wurden als Ansprechperson in der Interessenbekundung Ihrer Behörde zum Beitritt zum Verbund „Landeslösung Klarschiff-MV“ benannt.
+Wir haben die Beitrittserklärung vorbereitet und werden sie Ihrer Behörde unter der bei der Kommunalaufsicht des Landes Mecklenburg-Vorpommern gespeicherten E-Mail-Adresse übermitteln, wenn Sie auf den unten stehenden Link zur Anforderung klicken. Falls die Beitrittserklärung NICHT versandt werden soll, teilen Sie uns das bitte durch Nutzung des Links zum Rückruf der Interessenbekundung mit.
+
+Falls der Beitritt erfolgen soll:
+Bitte sorgen Sie dafür, dass die E-Mail zur Beitrittserklärung durch eine zur Nutzung des offiziellen Postfachs Ihrer Behörde berechtigte Person geöffnet, gelesen und zur Bestätigung der in der Beitrittserklärung enthaltene Link angeklickt wird.
+
+Den Versand der Beitrittserklärung an Ihre Behörde können Sie HIER ANFORDERN:
+<%= joining_confirm_url(activity_token: @participation.activity_token) %>
+
+Falls Sie KEINE Beitrittserklärung anfordern möchten, können Sie die Interessenbekundung HIER ZURÜCKRUFEN.
+<%= joining_reject_url(activity_token: @participation.activity_token) %>
+
+Unter folgenden Links finden Sie die aktuellen Fassungen der „Vereinbarung über die gemeinsame Zusammenarbeit nach § 17 E-GovG M-V“ (<%= url_for("#{root_url}files/VereinbarungGemeinsameZusammenarbeit.pdf") %>) sowie die „Vereinbarung über die Verarbeitung personenbezogener Daten in gemeinsamer Verantwortlichkeit“ (<%= url_for("#{root_url}files/VereinbarungVerarbeitungDSGVO.pdf") %>), die die Zusammenarbeit der Kooperationspartner in Klarschiff-MV beschreiben.
+Nach erfolgter Beitrittserklärung werden Ihrer Behörde Zugangsdaten zum Backend von Klarschiff-MV bereitgestellt.
+
+Mit freundlichem Gruß
+
+<%= MasterData.first.leading_cooperation_partner_name %>
+<%= MasterData.first.leading_cooperation_partner_address %>
+<%= MasterData.first.leading_cooperation_partner_email %>
