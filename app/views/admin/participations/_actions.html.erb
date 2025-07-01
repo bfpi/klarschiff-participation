@@ -1,0 +1,24 @@
+<%= link_to content_tag(:i, '', class: 'fa fa-pencil'), edit_admin_participation_path(entry),
+            class: 'btn btn-sm btn-outline-primary' %>
+
+<% if entry.status_prepared? %>
+  <%= link_to content_tag(:i, '', class: 'fa fa-paper-plane'), admin_participation_inform_path(entry),
+              class: 'btn btn-sm btn-outline-primary', title: t('.inform'),
+              data: { turbo_method: :get, turbo_confirm: t('.inform_confirm') } %>
+<% elsif entry.status_joining? %>
+  <%= link_to content_tag(:i, '', class: 'fa fa-sign-in'), admin_participation_join_path(entry),
+              class: 'btn btn-sm btn-outline-primary', title: t('.join'),
+              data: { turbo_method: :get, turbo_confirm: t('.join_confirm') } %>
+<% elsif entry.status_joined? %>
+  <%= link_to content_tag(:i, '', class: 'fa fa-sign-out'), admin_participation_withdrawal_path(entry),
+              class: 'btn btn-sm btn-outline-primary', title: t('.withdrawal'),
+              data: { turbo_method: :get, turbo_confirm: t('.withdrawal_confirm') } %>
+<% elsif entry.status_withdrawal? %>
+  <%= link_to content_tag(:i, '', class: 'fa fa-sign-in'), admin_participation_withdrawal_check_path(entry),
+              class: 'btn btn-sm btn-outline-primary', title: t('.withdrawal_check'),
+              data: { turbo_method: :get, turbo_confirm: t('.withdrawal_check_confirm') } %>
+<% elsif entry.status_withdrawal_check? %>
+  <%= link_to content_tag(:i, '', class: 'fa fa-sign-out'), admin_participation_withdraw_path(entry),
+              class: 'btn btn-sm btn-outline-primary', title: t('.withdraw'),
+              data: { turbo_method: :get, turbo_confirm: t('.withdraw_confirm') } %>
+<% end -%>

@@ -1,36 +1,29 @@
-require:
-  - rubocop-capybara
-
 plugins:
+  - rubocop-capybara
   - rubocop-minitest
   - rubocop-performance
   - rubocop-rails
 
 AllCops:
-  NewCops: enable
   Exclude:
-    - 'app/models/settings.rb'
+    - 'bin/brakeman'
     - 'bin/bundle'
+    - 'bin/dev'
     - 'bin/rails'
     - 'bin/rake'
+    - 'bin/rubocop'
     - 'bin/setup'
-    - 'config/initializers/new_framework_defaults_*.rb'
+    - 'bin/thrust'
     - 'db/schema.rb'
     - 'vendor/**/**'
-
-Layout/EmptyLines:
-  Exclude:
-    - 'config/initializers/new_framework_defaults_7_1.rb'
+  NewCops: enable
 
 Layout/LineLength:
   Max: 120
 
-Layout/MultilineMethodCallIndentation:
-  Exclude:
-    - 'config/environments/production.rb'
-
 Layout/SpaceInsideArrayLiteralBrackets:
   Exclude:
+    - 'config/environments/consolidation.rb'
     - 'config/environments/production.rb'
     - 'config/initializers/filter_parameter_logging.rb'
 
@@ -40,11 +33,14 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   Exclude:
-    - 'config/environments/development.rb'
+    - 'config/routes.rb'
 
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*'
+
+Metrics/ClassLength:
+  Exclude: ['test/**/*']
 
 Metrics/ParameterLists:
   CountKeywordArgs: false
@@ -60,6 +56,7 @@ Style/FrozenStringLiteralComment:
     - 'config/application.rb'
     - 'config/boot.rb'
     - 'config/environment.rb'
+    - 'config/environments/consolidation.rb'
     - 'config/environments/development.rb'
     - 'config/environments/production.rb'
     - 'config/environments/test.rb'
@@ -67,11 +64,13 @@ Style/FrozenStringLiteralComment:
     - 'config/initializers/content_security_policy.rb'
     - 'config/initializers/filter_parameter_logging.rb'
     - 'config/initializers/inflections.rb'
-    - 'config/initializers/new_framework_defaults_7_1.rb'
     - 'config/initializers/permissions_policy.rb'
+    - 'config/puma.rb'
+    - 'Gemfile'
 
 Style/GlobalStdStream:
   Exclude:
+    - 'config/environments/consolidation.rb'
     - 'config/environments/production.rb'
 
 Style/PercentLiteralDelimiters:
@@ -80,6 +79,7 @@ Style/PercentLiteralDelimiters:
 
 Style/RedundantConstantBase:
   Exclude:
+    - 'config/environments/consolidation.rb'
     - 'config/environments/production.rb'
 
 Style/StringLiterals:
@@ -87,10 +87,12 @@ Style/StringLiterals:
     - 'config/application.rb'
     - 'config/boot.rb'
     - 'config/environment.rb'
+    - 'config/environments/consolidation.rb'
     - 'config/environments/development.rb'
     - 'config/environments/production.rb'
     - 'config/environments/test.rb'
     - 'config/initializers/assets.rb'
+    - 'config/puma.rb'
 
 Style/SymbolArray:
   Exclude:

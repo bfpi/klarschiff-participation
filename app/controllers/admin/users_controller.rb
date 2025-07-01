@@ -46,7 +46,7 @@ module Admin
     private
 
     def entry_params
-      params.require(:user).permit(:name, :login, :password, :password_confirmation, :role)
+      params.expect(user: %i[name login password password_confirmation role])
     end
   end
 end

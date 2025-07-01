@@ -7,9 +7,48 @@ DEFAULTS: &DEFAULTS
   contact_name: contact_name_$LABEL
   contact_email: contact_email_$LABEL@example.com
   contact_phone: contact_phone_$LABEL
-  leading_cooperation_partner_name: ''
-  leading_cooperation_partner_address: ''
-  leading_cooperation_partner_email: ''
 
-one:
+interested:
   <<: *DEFAULTS
+  status: $LABEL
+
+prepared: &PREPARED
+  <<: *DEFAULTS
+  official_email_authority: official_email_authority_$LABEL@example.com
+  status: $LABEL
+
+informed:
+  <<: *PREPARED
+  activity_token: e600e029-c47c-4663-8829-7c0fdd669c37
+
+call_back:
+  <<: *PREPARED
+
+provide:
+  <<: *PREPARED
+  activity_token: 3b54e7b5-92ec-43a1-8a6b-2c510d695c6c
+
+joining:
+  <<: *PREPARED
+
+joined:
+  <<: *PREPARED
+
+informed_withdrawal:
+  <<: *PREPARED
+  activity_token: d9697ea4-57f0-43a1-a189-aec5c88bc0a8
+
+provide_withdrawal:
+  <<: *PREPARED
+  activity_token: 7b9df2c0-88c9-454b-a04e-a1e470edcb01
+
+withdrawal:
+  <<: *PREPARED
+
+withdrawal_check:
+  <<: *PREPARED
+
+withdraw:
+  <<: *PREPARED
+  withdrawal_receipt_date: <%= Date.yesterday %>
+  withdrawal_effectiveness_date: <%= Date.tomorrow %>

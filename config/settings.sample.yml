@@ -1,10 +1,11 @@
 development: &default
+  client:
+    name: Klarschiff-MV
+  mailer: 
+    interceptions_recipient: support-klarschiff@bfpi.de
   url:
     imprint: https://www.klarschiff-mv.de/static/imprint
     external_privacy_url: https://www.regierung-mv.de/Datenschutz/
-
-  client:
-    name: Klarschiff-MV
 
 test:
   <<: *default

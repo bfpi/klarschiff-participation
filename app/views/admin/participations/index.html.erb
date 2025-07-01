@@ -1,6 +1,10 @@
 <div class="container">
   <h1><%= Participation.model_name.human(count: 2) %></h1>
 
+  <% if flash[:info] %>
+    <div class="alert alert-warning" role="alert"><%= flash[:info] %></div>
+  <% end %>
+
   <%= paginate @participations %>
 
   <table class="table">
@@ -24,8 +28,7 @@
           <% end -%>
           <td><%= l(entry.created_at) %></td>
           <td class="actions">
-            <%= link_to content_tag(:i, '', class: 'fa fa-pencil'), edit_admin_participation_path(entry),
-                        class: 'btn btn-sm btn-outline-primary' %>
+            <%= render(partial: 'actions', locals: { entry: entry }) %>
           </td>
         </tr>
       <% end -%>
