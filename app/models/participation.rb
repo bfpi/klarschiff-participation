@@ -3,6 +3,8 @@
 class Participation < ApplicationRecord
   include Logging
 
+  default_scope { where(active: true) }
+
   enum :role, { procedural_responsibility: 0, office: 1, coordination: 2, steering_committee: 3, product_owner: 4 },
        prefix: true
   enum :status, { interested: 0, prepared: 1, informed: 2, joined: 3 }, prefix: true
