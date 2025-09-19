@@ -47,6 +47,8 @@ withdrawal:
 
 withdrawal_check:
   <<: *PREPARED
+  withdrawal_receipt_date: <%= Date.yesterday %>
+  withdrawal_effectiveness_date: <%= Date.tomorrow %>
 
 withdraw:
   <<: *PREPARED

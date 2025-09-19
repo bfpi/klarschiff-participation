@@ -33,14 +33,14 @@ class Participation < ApplicationRecord
   before_save :update_official_email_authority, if: lambda {
     status_interested? && official_email_authority_change.present?
   }
-  before_save :changed_to_status_informed, if: -> { status_changed? && status_informed? }
-  before_save :changed_to_status_provide, if: -> { status_changed? && status_provide? }
+  before_save :changed_to_status_informed, if: -> { !activity_token_changed? && status_changed? && status_informed? }
+  before_save :changed_to_status_provide, if: -> { !activity_token_changed? && status_changed? && status_provide? }
   before_save :changed_to_status_joining, if: -> { status_changed? && status_joining? }
-  before_save :changed_to_status_informed_withdrawal, if: -> { status_changed? && status_informed_withdrawal? }
-  before_save :changed_to_status_provide_withdrawal, if: -> { status_changed? && status_provide_withdrawal? }
+  before_save :changed_to_status_informed_withdrawal, if: -> { !activity_token_changed? && status_changed? && status_informed_withdrawal? }
+  before_save :changed_to_status_provide_withdrawal, if: -> { !activity_token_changed? && status_changed? && status_provide_withdrawal? }
   before_save :changed_to_status_withdrawal, if: -> { status_changed? && status_withdrawal? }
   before_save :changed_to_status_withdrawal_check, if: -> { status_changed? && status_withdrawal_check? }
-  before_save :changed_to_status_withdraw, if: -> { status_changed? && status_withdraw? }
+  before_save :changed_to_status_withdraw, if: -> { !activity_token_changed? && status_changed? && status_withdraw? }
 
   def at_least_prepared?
     status_index >= Participation.statuses[:prepared]
@@ -63,11 +63,11 @@ class Participation < ApplicationRecord
   end
 
   def changed_to_status_informed
-    JoiningMailer.informed(self).deliver_later
+    JoiningMailer.informed(self).deliver_now
   end
 
   def changed_to_status_provide
-    JoiningMailer.provide(self).deliver_later
+    JoiningMailer.provide(self).deliver_now
   end
 
   def changed_to_status_joining
@@ -75,11 +75,11 @@ class Participation < ApplicationRecord
   end
 
   def changed_to_status_informed_withdrawal
-    WithdrawalMailer.informed_withdrawal(self).deliver_later
+    WithdrawalMailer.informed_withdrawal(self).deliver_now
   end
 
   def changed_to_status_provide_withdrawal
-    WithdrawalMailer.provide_withdrawal(self).deliver_later
+    WithdrawalMailer.provide_withdrawal(self).deliver_now
   end
 
   def changed_to_status_withdrawal
@@ -92,6 +92,6 @@ class Participation < ApplicationRecord
   end
 
   def changed_to_status_withdraw
-    WithdrawalMailer.withdraw(self).deliver_later
+    WithdrawalMailer.withdraw(self).deliver_now
   end
 end
