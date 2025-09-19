@@ -5,6 +5,11 @@ development:
 test:
   adapter: test
 
+consolidation:
+  adapter: redis
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  channel_prefix: klarschiff_participation_consolidation
+
 production:
   adapter: redis
   url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
