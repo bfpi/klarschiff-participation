@@ -36,8 +36,12 @@ class Participation < ApplicationRecord
   before_save :changed_to_status_informed, if: -> { !activity_token_changed? && status_changed? && status_informed? }
   before_save :changed_to_status_provide, if: -> { !activity_token_changed? && status_changed? && status_provide? }
   before_save :changed_to_status_joining, if: -> { status_changed? && status_joining? }
-  before_save :changed_to_status_informed_withdrawal, if: -> { !activity_token_changed? && status_changed? && status_informed_withdrawal? }
-  before_save :changed_to_status_provide_withdrawal, if: -> { !activity_token_changed? && status_changed? && status_provide_withdrawal? }
+  before_save :changed_to_status_informed_withdrawal, if: lambda {
+    !activity_token_changed? && status_changed? && status_informed_withdrawal?
+  }
+  before_save :changed_to_status_provide_withdrawal, if: lambda {
+    !activity_token_changed? && status_changed? && status_provide_withdrawal?
+  }
   before_save :changed_to_status_withdrawal, if: -> { status_changed? && status_withdrawal? }
   before_save :changed_to_status_withdrawal_check, if: -> { status_changed? && status_withdrawal_check? }
   before_save :changed_to_status_withdraw, if: -> { !activity_token_changed? && status_changed? && status_withdraw? }
