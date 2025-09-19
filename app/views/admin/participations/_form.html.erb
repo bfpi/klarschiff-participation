@@ -231,11 +231,11 @@
   </div>
 <% end -%>
 
-<% if form.object.at_least_prepared? %>
+<% if form.object.at_least_informed_withdrawal? %>
   <div class="card mb-4">
     <div class="card-body">
       <h3 class="card-title">
-        <%= Participation.human_attribute_name :regional_admin, name: Settings::Client.name %>
+        <%= Participation.human_attribute_name :withdrawal, name: Settings::Client.name %>
       </h3>
 
       <div class="mb-2 row">
