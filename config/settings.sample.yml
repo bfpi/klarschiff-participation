@@ -1,5 +1,5 @@
 development: &default
-  instance: &instance_remote
+  instance:
     name: Klarschiff-MV
     relative_url_root: /
   mailer: 
@@ -19,11 +19,19 @@ alpha:
 consolidation:
   <<: *default
   instance:
-    <<: *instance_remote
+    name: Klarschiff-MV
     relative_url_root: /participation
+  mailer: 
+    interceptions_recipient: support-klarschiff@bfpi.de
+    from: participation@klarschiff-mv.sis-schwerin.de
+    host: klarschiff-mv.sis-schwerin.de
 
 production:
   <<: *default
   instance:
-    <<: *instance_remote
+    name: Klarschiff-MV
     relative_url_root: /participation
+  mailer: 
+    interceptions_recipient:
+    from: participation@klarschiff-mv.de
+    host: klarschiff-mv.de
