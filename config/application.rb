@@ -30,5 +30,19 @@ module KlarschiffParticipation
 
     config.i18n.default_locale = :de
     config.i18n.available_locales = %i[de]
+
+    # Global settings from settings.yml
+    settings_file = Rails.root.join('config/settings.yml')
+    if File.file?(settings_file)
+      settings = settings_file.open do |file|
+        YAML.load file, aliases: true
+      end.with_indifferent_access[Rails.env]
+
+      relative_url_root = settings.dig(:instance, :relative_url_root)
+      config.relative_url_root = relative_url_root if relative_url_root.present?
+
+      host = settings.dig(:mailer, :host)
+      config.action_mailer.default_url_options = { host: host } if host.present?
+    end
   end
 end

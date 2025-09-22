@@ -1,8 +1,11 @@
 development: &default
-  client:
+  instance: &instance_remote
     name: Klarschiff-MV
+    relative_url_root: /
   mailer: 
-    interceptions_recipient: support-klarschiff@bfpi.de
+    interceptions_recipient: to@example.com
+    from: from@example.com
+    host: example.com
   url:
     imprint: https://www.klarschiff-mv.de/static/imprint
     external_privacy_url: https://www.regierung-mv.de/Datenschutz/
@@ -15,6 +18,12 @@ alpha:
 
 consolidation:
   <<: *default
+  instance:
+    <<: *instance_remote
+    relative_url_root: /participation
 
 production:
   <<: *default
+  instance:
+    <<: *instance_remote
+    relative_url_root: /participation
