@@ -9,11 +9,13 @@ AllCops:
     - 'bin/brakeman'
     - 'bin/bundle'
     - 'bin/dev'
+    - 'bin/ci'
     - 'bin/rails'
     - 'bin/rake'
     - 'bin/rubocop'
     - 'bin/setup'
     - 'bin/thrust'
+    - 'config/ci.rb'
     - 'db/schema.rb'
     - 'vendor/**/**'
   NewCops: enable
