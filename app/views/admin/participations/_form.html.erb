@@ -45,7 +45,7 @@
 <div class="card mb-4">
   <div class="card-body">
     <h3 class="card-title">
-      <%= Participation.human_attribute_name :contact, name: Settings::Client.name %>
+      <%= Participation.human_attribute_name :contact, name: Settings::Instance.name %>
     </h3>
 
     <div class="mb-2 row">
@@ -83,30 +83,7 @@
     <div class="mb-2 row">
       <%= form.label :status, class: 'col-2 col-form-label' %>
       <div class="col">
-        <% Participation.statuses.each do |status, ix| -%>
-          <div class="form-check">
-            <%= form.label "status_#{status}", '', class: 'form-check-label' do %>
-              <%= form.radio_button :status, status %>
-              <%= Participation.human_enum_name :status, status %>
-            <% end -%>
-          </div>
-        <% end -%>
-      </div>
-    </div>
-
-    <div class="mb-2 row">
-      <%= form.label :partner_number, class: 'col-2 col-form-label' %>
-      <div class="col">
-        <%= form.text_field :partner_number, class: 'form-control' %>
-        <%= show_error_messages form.object, :partner_number %>
-      </div>
-    </div>
-
-    <div class="mb-2 row">
-      <%= form.label :name_of_the_signatory, class: 'col-2 col-form-label' %>
-      <div class="col">
-        <%= form.text_area :name_of_the_signatory, class: 'form-control' %>
-        <%= show_error_messages form.object, :name_of_the_signatory %>
+        <%= Participation.human_enum_name :status, form.object.status %>
       </div>
     </div>
 
@@ -118,90 +95,178 @@
       </div>
     </div>
 
-    <div class="mb-2 row">
-      <%= form.label :role, class: 'col-2 col-2 col-form-label' %>
-      <div class="col">
-        <% Participation.roles.each do |role, ix| -%>
-          <div class="form-check">
-            <%= form.label "role_#{role}", '', class: 'form-check-label' do %>
-              <%= form.radio_button :role, role %>
-              <%= Participation.human_enum_name :role, role %>
-            <% end -%>
-          </div>
-        <% end -%>
-      </div>
-    </div>
-
-    <div class="mb-2 row">
-      <%= form.label :effectiveness_date, class: 'col-2 col-form-label' %>
-      <div class="col">
-        <%= form.date_field :effectiveness_date, class: 'form-control' %>
-        <%= show_error_messages form.object, :effectiveness_date %>
-      </div>
-    </div>
-
-    <div class="mb-2 row">
-      <%= form.label :withdrawal_receipt_date, class: 'col-2 col-form-label' %>
-      <div class="col">
-        <%= form.date_field :withdrawal_receipt_date, class: 'form-control' %>
-        <%= show_error_messages form.object, :withdrawal_receipt_date %>
-      </div>
-    </div>
-
-    <div class="mb-2 row">
-      <%= form.label :withdrawal_name_of_the_signatory, class: 'col-2 col-form-label' %>
-      <div class="col">
-        <%= form.text_field :withdrawal_name_of_the_signatory, class: 'form-control' %>
-        <%= show_error_messages form.object, :withdrawal_name_of_the_signatory %>
-      </div>
-    </div>
-
-    <div class="mb-2 row">
-      <%= form.label :withdrawal_effectiveness_date, class: 'col-2 col-form-label' %>
-      <div class="col">
-        <%= form.date_field :withdrawal_effectiveness_date, class: 'form-control' %>
-        <%= show_error_messages form.object, :withdrawal_effectiveness_date %>
-      </div>
-    </div>
-
-    <div class="row">
-      <%= form.label :withdrawal_effectiveness_date_corrected, class: 'col-2 col-form-label' %>
-      <div class="col">
-        <%= form.date_field :withdrawal_effectiveness_date_corrected, class: 'form-control' %>
-        <%= show_error_messages form.object, :withdrawal_effectiveness_date_corrected %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<% if Current.user.role_admin? -%>
-  <div class="card mb-4">
-    <div class="card-body">
-      <h3 class="card-title">
-        <%= Participation.human_attribute_name :leading_cooperation_partner %>
-      </h3>
-
+    <% if form.object.at_least_prepared? %>
       <div class="mb-2 row">
-        <%= form.label :leading_cooperation_partner_name, class: 'col-2 col-form-label' %>
+        <%= form.label :partner_number, class: 'col-2 col-form-label' %>
         <div class="col">
-          <%= form.text_field :leading_cooperation_partner_name, class: 'form-control' %>
-          <%= show_error_messages form.object, :leading_cooperation_partner_name %>
+          <%= form.text_field :partner_number, class: 'form-control' %>
+          <%= show_error_messages form.object, :partner_number %>
         </div>
       </div>
 
       <div class="mb-2 row">
-        <%= form.label :leading_cooperation_partner_address, class: 'col-2 col-form-label' %>
+        <%= form.label :role, class: 'col-2 col-2 col-form-label' %>
         <div class="col">
-          <%= form.text_area :leading_cooperation_partner_address, class: 'form-control' %>
-          <%= show_error_messages form.object, :leading_cooperation_partner_address %>
+          <% Participation.roles.each do |role, ix| -%>
+            <div class="form-check">
+              <%= form.label "role_#{role}", '', class: 'form-check-label' do %>
+                <%= form.radio_button :role, role %>
+                <%= Participation.human_enum_name :role, role %>
+              <% end -%>
+            </div>
+          <% end -%>
+        </div>
+      </div>
+
+      <div class="mb-2 row">
+        <%= form.label :name_of_the_signatory, class: 'col-2 col-form-label' %>
+        <div class="col">
+          <%= form.text_area :name_of_the_signatory, class: 'form-control' %>
+          <%= show_error_messages form.object, :name_of_the_signatory %>
         </div>
       </div>
 
       <div class="row">
-        <%= form.label :leading_cooperation_partner_email, class: 'col-2 col-form-label' %>
+        <%= form.label :effectiveness_date, class: 'col-2 col-form-label' %>
         <div class="col">
-          <%= form.text_field :leading_cooperation_partner_email, class: 'form-control' %>
-          <%= show_error_messages form.object, :leading_cooperation_partner_email %>
+          <%= form.date_field :effectiveness_date, class: 'form-control' %>
+          <%= show_error_messages form.object, :effectiveness_date %>
+        </div>
+      </div>
+    <% end -%>
+  </div>
+</div>
+
+<% if form.object.at_least_prepared? %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h3 class="card-title">
+        <%= Participation.human_attribute_name :regional_admin, name: Settings::Instance.name %>
+      </h3>
+
+      <div class="mb-2 row">
+        <%= form.label :ra_name, class: 'col-2 col-form-label' %>
+        <div class="col">
+          <%= form.text_field :ra_name, class: 'form-control' %>
+          <%= show_error_messages form.object, :ra_name %>
+        </div>
+      </div>
+
+      <div class="mb-2 row">
+        <%= form.label :ra_email, class: 'col-2 col-form-label' %>
+        <div class="col">
+          <%= form.text_field :ra_email, class: 'form-control' %>
+          <%= show_error_messages form.object, :ra_email %>
+        </div>
+      </div>
+
+      <div class="mb-2 row">
+        <%= form.label :ra_phone, class: 'col-2 col-form-label' %>
+        <div class="col">
+          <%= form.text_field :ra_phone, class: 'form-control' %>
+          <%= show_error_messages form.object, :ra_phone %>
+        </div>
+      </div>
+
+      <div class="mb-2 row">
+        <div class="col-10 offset-2">
+          <div class="form-check">
+            <%= form.label :ra_active, '', class: 'form-check-label' do %>
+              <%= form.check_box :ra_active %>
+              <%= Participation.human_attribute_name :ra_active %>
+            <% end -%>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-2 row">
+        <%= form.label :ra_activate_date, class: 'col-2 col-form-label' %>
+        <div class="col">
+          <%= form.date_field :ra_activate_date, class: 'form-control' %>
+          <%= show_error_messages form.object, :ra_activate_date %>
+        </div>
+      </div>
+
+      <div class="mb-2 row">
+        <div class="col-10 offset-2">
+          <div class="form-check">
+            <%= form.label :ra_trained, '', class: 'form-check-label' do %>
+              <%= form.check_box :ra_trained %>
+              <%= Participation.human_attribute_name :ra_trained %>
+            <% end -%>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-2 row">
+        <%= form.label :ra_train_date, class: 'col-2 col-form-label' %>
+        <div class="col">
+          <%= form.date_field :ra_train_date, class: 'form-control' %>
+          <%= show_error_messages form.object, :ra_train_date %>
+        </div>
+      </div>
+
+      <div class="mb-2 row">
+        <%= form.label :ra_training, class: 'col-2 col-2 col-form-label' %>
+        <div class="col">
+          <% Participation.ra_trainings.each do |ra_training, ix| -%>
+            <div class="form-check">
+              <%= form.label "ra_training_#{ra_training}", '', class: 'form-check-label' do %>
+                <%= form.radio_button :ra_training, ra_training %>
+                <%= Participation.human_enum_name :ra_training, ra_training %>
+              <% end -%>
+            </div>
+          <% end -%>
+        </div>
+      </div>
+
+      <div class="mb-2 row">
+        <%= form.label :ra_note, class: 'col-2 col-form-label' %>
+        <div class="col">
+          <%= form.text_area :ra_note, class: 'form-control' %>
+          <%= show_error_messages form.object, :ra_note %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end -%>
+
+<% if form.object.at_least_informed_withdrawal? %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h3 class="card-title">
+        <%= Participation.human_attribute_name :withdrawal, name: Settings::Instance.name %>
+      </h3>
+
+      <div class="mb-2 row">
+        <%= form.label :withdrawal_receipt_date, class: 'col-2 col-form-label' %>
+        <div class="col">
+          <%= form.date_field :withdrawal_receipt_date, class: 'form-control' %>
+          <%= show_error_messages form.object, :withdrawal_receipt_date %>
+        </div>
+      </div>
+
+      <div class="mb-2 row">
+        <%= form.label :withdrawal_name_of_the_signatory, class: 'col-2 col-form-label' %>
+        <div class="col">
+          <%= form.text_field :withdrawal_name_of_the_signatory, class: 'form-control' %>
+          <%= show_error_messages form.object, :withdrawal_name_of_the_signatory %>
+        </div>
+      </div>
+
+      <div class="mb-2 row">
+        <%= form.label :withdrawal_effectiveness_date, class: 'col-2 col-form-label' %>
+        <div class="col">
+          <%= form.date_field :withdrawal_effectiveness_date, class: 'form-control' %>
+          <%= show_error_messages form.object, :withdrawal_effectiveness_date %>
+        </div>
+      </div>
+
+      <div class="row">
+        <%= form.label :withdrawal_effectiveness_date_corrected, class: 'col-2 col-form-label' %>
+        <div class="col">
+          <%= form.date_field :withdrawal_effectiveness_date_corrected, class: 'form-control' %>
+          <%= show_error_messages form.object, :withdrawal_effectiveness_date_corrected %>
         </div>
       </div>
     </div>

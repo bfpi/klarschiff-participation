@@ -1,10 +1,14 @@
 development: &default
+  instance:
+    name: Klarschiff-MV
+    relative_url_root: /
+  mailer: 
+    interceptions_recipient: to@example.com
+    from: from@example.com
+    host: example.com
   url:
     imprint: https://www.klarschiff-mv.de/static/imprint
     external_privacy_url: https://www.regierung-mv.de/Datenschutz/
-
-  client:
-    name: Klarschiff-MV
 
 test:
   <<: *default
@@ -14,6 +18,20 @@ alpha:
 
 consolidation:
   <<: *default
+  instance:
+    name: Klarschiff-MV
+    relative_url_root: /participation
+  mailer: 
+    interceptions_recipient: support-klarschiff@bfpi.de
+    from: participation@klarschiff-mv.sis-schwerin.de
+    host: klarschiff-mv.sis-schwerin.de
 
 production:
   <<: *default
+  instance:
+    name: Klarschiff-MV
+    relative_url_root: /participation
+  mailer: 
+    interceptions_recipient:
+    from: participation@klarschiff-mv.de
+    host: klarschiff-mv.de

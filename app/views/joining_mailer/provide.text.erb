@@ -1,0 +1,19 @@
+Guten Tag,
+
+Ihre Behörde hat Interesse bekundet, der KOOPERATIONSVEREINBARUNG ÜBER DIE GEMEINSAME ZUSAMMENARBEIT BEI DER NUTZUNG UND WEITERENTWICKLUNG DER LANDESLÖSUNG „KLARSCHIFF-MV“ beizutreten. Die in der Interessenbekundung benannte Person wurde daraufhin von uns gebeten, die vorliegende Beitrittserklärung anzufordern. Um eine ausreichende Verbindlichkeit zu erreichen, haben wir diese E-Mail mit dem Link zur Beitrittserklärung an die der Kommunalaufsicht des Landes Mecklenburg-Vorpommern genannte E-Mail-Adresse Ihrer Behörde gesandt und bitten Sie nun, die Beitrittserklärung nach Anklicken des unten stehenden Links abzugeben.
+Nach dem Anklicken des Links wird sich ein Formular öffnen, dass den Text der Beitrittserklärung Ihrer Behörde zeigt. Sie werden dort gebeten, den Ort der Unterzeichnung und den Namen der unterzeichnenden Person anzugeben. Mit dem Absenden des Formulars wird sich dann Ihr E-Mail-Client öffnen und Ihnen die vollständige Erklärung als E-Mail an den federführenden Kooperationspartner zeigen. Mit dem Versand der E-Mail durch Sie kommt schließlich eine wirksame Erklärung Ihres Beitritts in Textform zustande.
+Sie erhalten eine Kopie dieser Mail.
+
+Ihr Beitritt wird zum Ersten des auf die Abgabe der Erklärung folgenden Monats wirksam.
+
+ZUR BEITRITTSERKLÄRUNG: <%= joining_new_url(activity_token: @participation.activity_token) %>
+
+Unter folgenden Links finden Sie die aktuellen Fassungen der „Vereinbarung über die gemeinsame Zusammenarbeit nach § 17 E-GovG M-V“ (<%= url_for("#{root_url}files/VereinbarungGemeinsameZusammenarbeit.pdf") %>) sowie die „Vereinbarung über die Verarbeitung personenbezogener Daten in gemeinsamer Verantwortlichkeit“ (<%= url_for("#{root_url}files/VereinbarungVerarbeitungDSGVO.pdf") %>), die die Zusammenarbeit der Kooperationspartner in Klarschiff-MV beschreiben.
+
+Nach erfolgter Beitrittserklärung werden Ihrer Behörde Zugangsdaten zum Backend von Klarschiff-MV bereitgestellt.
+
+Mit freundlichem Gruß
+
+<%= MasterData.first.leading_cooperation_partner_name %>
+<%= MasterData.first.leading_cooperation_partner_address %>
+<%= MasterData.first.leading_cooperation_partner_email %>

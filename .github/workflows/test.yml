@@ -10,7 +10,7 @@ jobs:
       KLARSCHIFF_PARTICIPATION_DATABASE_PASSWORD: <password>
     services:
       postgres:
-        image: postgis/postgis:12-3.1
+        image: postgres
         env:
           POSTGRES_DB: klarschiff_participation_test
           POSTGRES_PASSWORD: ${{env.KLARSCHIFF_PARTICIPATION_DATABASE_PASSWORD}}
@@ -23,7 +23,7 @@ jobs:
           submodules: true
       - uses: actions/setup-node@v6
         with:
-          node-version: latest
+          node-version: 20
       - run: yarn install
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1

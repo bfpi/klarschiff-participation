@@ -25,6 +25,10 @@ test:
   <<: *default
   database: klarschiff_participation_test
 
+consolidation:
+  <<: *default
+  database: klarschiff_participation_consolidation
+
 production:
   <<: *default
   database: klarschiff_participation_production
