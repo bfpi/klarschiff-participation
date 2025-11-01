@@ -15,7 +15,7 @@ gem 'sprockets-rails'
 gem 'pg'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '~> 6.4'
+gem 'puma', '~> 7.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
