@@ -25,7 +25,7 @@ class WithdrawalController < ApplicationController
     return render template: 'application/confirmation_error', status: :not_found if @participation.blank?
 
     @participation.update(permitted_params.merge(status: :withdrawal))
-    render template: 'withdrawal/new' unless @participation.save
+    return render template: 'withdrawal/new' unless @participation.save
 
     redirect_to mailto_response, allow_other_host: true
   end
@@ -40,6 +40,6 @@ class WithdrawalController < ApplicationController
   end
 
   def permitted_params
-    params.expect(participation: %i[place_of_signature withdrawal_name_of_the_signatory])
+    params.expect(participation: %i[withdrawal_effectiveness_date place_of_signature withdrawal_name_of_the_signatory])
   end
 end

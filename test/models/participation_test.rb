@@ -122,6 +122,7 @@ class ParticipationTest < ActiveSupport::TestCase
 
   test 'notify provide_withdrawal participation while status provide_withdrawal' do
     participation = participation(:provide_withdrawal)
+    participation.withdrawal_effectiveness_date = Time.zone.today
     participation.place_of_signature = 'place_of_signature'
     participation.withdrawal_name_of_the_signatory = 'name_of_the_signatory'
     participation.status_withdrawal!

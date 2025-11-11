@@ -3,7 +3,6 @@
 module Admin
   class ParticipationsController < AdminController
     def index
-      flash[:info] = nil
       @participations = Participation.order(created_at: :desc).page(page).per(per_page)
     end
 
@@ -26,9 +25,8 @@ module Admin
 
       participation.status_informed!
 
-      index
       flash[:info] = t('.confirm')
-      render template: 'admin/participations/index'
+      redirect_to action: :index
     end
 
     def join
@@ -37,9 +35,8 @@ module Admin
 
       participation.status_joined!
 
-      index
       flash[:info] = t('.confirm')
-      render template: 'admin/participations/index'
+      redirect_to action: :index
     end
 
     def withdrawal
@@ -48,9 +45,8 @@ module Admin
 
       participation.status_informed_withdrawal!
 
-      index
       flash[:info] = t('.confirm')
-      render template: 'admin/participations/index'
+      redirect_to action: :index
     end
 
     def withdrawal_check
@@ -59,9 +55,8 @@ module Admin
 
       participation.status_withdrawal_check!
 
-      index
       flash[:info] = t('.confirm')
-      render template: 'admin/participations/index'
+      redirect_to action: :index
     end
 
     def withdraw
@@ -70,9 +65,8 @@ module Admin
 
       participation.status_withdraw!
 
-      index
       flash[:info] = t('.confirm')
-      render template: 'admin/participations/index'
+      redirect_to action: :index
     end
 
     private

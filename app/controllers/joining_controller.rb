@@ -24,9 +24,9 @@ class JoiningController < ApplicationController
     @participation = Participation.status_provide.find_by(params.expect(participation: %i[activity_token]))
     return render template: 'application/confirmation_error', status: :not_found if @participation.blank?
 
-    @participation.update(params.expect(participation: %i[place_of_signature
-                                                          name_of_the_signatory]).merge(status: :joining))
-    render template: 'joining/new' unless @participation.save
+    @participation.update(permitted_params.merge(status: :joining))
+    return render template: 'joining/new' unless @participation.save
+
     redirect_to mailto_response, allow_other_host: true
   end
 
@@ -37,5 +37,9 @@ class JoiningController < ApplicationController
     subject = t('.subject')
     str = render_to_string(template: 'joining/create_mail', formats: :text)
     "mailto:?to=#{format(to)}&subject=#{format(subject)}&body=#{ERB::Util.url_encode(str)}"
+  end
+
+  def permitted_params
+    params.expect(participation: %i[place_of_signature name_of_the_signatory])
   end
 end

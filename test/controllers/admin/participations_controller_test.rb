@@ -56,7 +56,7 @@ module Admin
       login username: 'admin'
       get "/admin/participations/#{participation(:prepared).id}/inform"
 
-      assert_response :success
+      assert_redirected_to admin_participations_path
       assert_predicate participation(:prepared).reload, :status_informed?
     end
 
@@ -71,7 +71,7 @@ module Admin
       login username: 'admin'
       get "/admin/participations/#{participation(:joining).id}/join"
 
-      assert_response :success
+      assert_redirected_to admin_participations_path
       assert_predicate participation(:joining).reload, :status_joined?
     end
 
@@ -86,7 +86,7 @@ module Admin
       login username: 'admin'
       get "/admin/participations/#{participation(:joined).id}/withdrawal"
 
-      assert_response :success
+      assert_redirected_to admin_participations_path
       assert_predicate participation(:joined).reload, :status_informed_withdrawal?
     end
 
@@ -101,7 +101,7 @@ module Admin
       login username: 'admin'
       get "/admin/participations/#{participation(:withdrawal).id}/withdrawal_check"
 
-      assert_response :success
+      assert_redirected_to admin_participations_path
       assert_predicate participation(:withdrawal).reload, :status_withdrawal_check?
     end
 
@@ -116,7 +116,7 @@ module Admin
       login username: 'admin'
       get "/admin/participations/#{participation(:withdrawal_check).id}/withdraw"
 
-      assert_response :success
+      assert_redirected_to admin_participations_path
       assert_predicate participation(:withdrawal_check).reload, :status_withdraw?
     end
 

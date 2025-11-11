@@ -7,7 +7,7 @@ An:
 <%= MasterData.first.leading_cooperation_partner_address %>
 
 <%= t('joining.new.text_html', authority_name: @participation.authority_name,
-                               authority_address: @participation.authority_address).gsub('<br>', "\r\n") %>
+                               authority_address: @participation.authority_address.gsub(/(?:\n\r?|\r\n?)/, ' ')).gsub('<br>', "\r\n") %>
 
 Mit freundlichen Grüßen
 

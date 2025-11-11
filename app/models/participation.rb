@@ -42,7 +42,7 @@ class Participation < ApplicationRecord
   before_save :changed_to_status_provide_withdrawal, if: lambda {
     !activity_token_changed? && status_changed? && status_provide_withdrawal?
   }
-  before_save :changed_to_status_withdrawal, if: -> { status_changed? && status_withdrawal? }
+  validates :withdrawal_effectiveness_date, presence: true, if: -> { status_changed? && status_withdrawal? }
   before_save :changed_to_status_withdrawal_check, if: -> { status_changed? && status_withdrawal_check? }
   before_save :changed_to_status_withdraw, if: -> { !activity_token_changed? && status_changed? && status_withdraw? }
 
@@ -84,11 +84,6 @@ class Participation < ApplicationRecord
 
   def changed_to_status_provide_withdrawal
     WithdrawalMailer.provide_withdrawal(self).deliver_now
-  end
-
-  def changed_to_status_withdrawal
-    # TODO: Datum der Wirksamkeit des Austritts - Wo kommt das her/wie wird das berechnet?
-    self.withdrawal_effectiveness_date = Time.zone.today
   end
 
   def changed_to_status_withdrawal_check

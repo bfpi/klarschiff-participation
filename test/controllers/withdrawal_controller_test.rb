@@ -44,6 +44,7 @@ class WithdrawalControllerTest < ActionDispatch::IntegrationTest
   test 'create for withdrawal' do
     patch '/withdrawal/create',
           params: { participation: { activity_token: participation(:provide_withdrawal).activity_token,
+                                     withdrawal_effectiveness_date: Time.zone.today.to_s,
                                      place_of_signature: 'aa', withdrawal_name_of_the_signatory: 'bb' } }
 
     assert_response :redirect

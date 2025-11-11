@@ -26,7 +26,16 @@
       <div class="row mb-3">
         <div class="col">
           <%= t('.text_html', authority_name: @participation.authority_name,
-                              authority_address: @participation.authority_address) %>
+                              authority_address: @participation.authority_address,
+                              withdrawal_effectiveness_date: '[TT.MM.JJJJ]') %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-3">
+          <%= Participation.human_attribute_name(:withdrawal_effectiveness_date) %>
+        </div>
+        <div class="col-9">
+          <%= form.date_field :withdrawal_effectiveness_date, class: 'form-control' %>
         </div>
       </div>
       <div class="row mb-3">
