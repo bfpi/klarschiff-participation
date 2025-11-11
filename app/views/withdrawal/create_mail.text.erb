@@ -7,8 +7,8 @@ An:
 <%= MasterData.first.leading_cooperation_partner_address %>
 
 <%= t('withdrawal.new.text_html', authority_name: @participation.authority_name,
-      authority_address: @participation.authority_address.gsub(/(?:\n\r?|\r\n?)/, ' '),
-     withdrawal_effectiveness_date: l(@participation.withdrawal_effectiveness_date)).gsub('<br>', "\r\n") %>
+                                  authority_address: @participation.authority_address.gsub(/(?:\n\r?|\r\n?)/, ' '),
+                                  withdrawal_effectiveness_date: l(@participation.withdrawal_effectiveness_date)).gsub('<br>', "\r\n") %>
 
 Mit freundlichen Grüßen
 

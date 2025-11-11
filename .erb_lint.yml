@@ -20,3 +20,7 @@ linters:
         Enabled: false
       Style/FrozenStringLiteralComment:
         Enabled: false
+      Layout/LineLength:
+        Exclude:
+          - 'app/views/withdrawal/create_mail.text.erb'
+          - 'app/views/joining/create_mail.text.erb'
