@@ -19,22 +19,67 @@ module Admin
       end
     end
 
+    def inform
+      participation = Participation.status_prepared.find(params[:participation_id])
+      return render status: :unprocessable_entity unless participation
+
+      participation.status_informed!
+
+      flash[:info] = t('.confirm')
+      redirect_to action: :index
+    end
+
+    def join
+      participation = Participation.status_joining.find(params[:participation_id])
+      return render status: :unprocessable_entity unless participation
+
+      participation.status_joined!
+
+      flash[:info] = t('.confirm')
+      redirect_to action: :index
+    end
+
+    def withdrawal
+      participation = Participation.status_joined.find(params[:participation_id])
+      return render status: :unprocessable_entity unless participation
+
+      participation.status_informed_withdrawal!
+
+      flash[:info] = t('.confirm')
+      redirect_to action: :index
+    end
+
+    def withdrawal_check
+      participation = Participation.status_withdrawal.find(params[:participation_id])
+      return render status: :unprocessable_entity unless participation
+
+      participation.status_withdrawal_check!
+
+      flash[:info] = t('.confirm')
+      redirect_to action: :index
+    end
+
+    def withdraw
+      participation = Participation.status_withdrawal_check.find(params[:participation_id])
+      return render status: :unprocessable_entity unless participation
+
+      participation.status_withdraw!
+
+      flash[:info] = t('.confirm')
+      redirect_to action: :index
+    end
+
     private
 
     def entry_params
-      params.require(:participation).permit(permitted_attributes)
+      params.expect(participation: permitted_attributes)
     end
 
     def permitted_attributes
-      attributes = %i[authority_name authority_address authority_email contact_name contact_email contact_phone
-                      partner_number name_of_the_signatory official_email_authority effectiveness_date
-                      withdrawal_receipt_date withdrawal_name_of_the_signatory withdrawal_effectiveness_date
-                      withdrawal_effectiveness_date_corrected status role]
-      return attributes unless Current.user.role_admin?
-
-      attributes << %i[leading_cooperation_partner_name leading_cooperation_partner_address
-                       leading_cooperation_partner_email]
-      attributes
+      %i[authority_address authority_email authority_name contact_email contact_name contact_phone effectiveness_date
+         name_of_the_signatory official_email_authority partner_number ra_activate_date ra_active ra_email ra_name
+         ra_note ra_phone ra_train_date ra_trained ra_training role withdrawal_effectiveness_date
+         withdrawal_effectiveness_date_corrected withdrawal_name_of_the_signatory withdrawal_receipt_date]
     end
   end
 end

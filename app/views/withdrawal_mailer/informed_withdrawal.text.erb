@@ -1,0 +1,18 @@
+Guten Tag <%= @participation.contact_name %>,
+
+Sie sind Ansprechperson Ihrer Behörde im Kooperationsverbund „Landeslösung Klarschiff-MV“. Wir haben den Wunsch nach Austritt aus dem Verbund zur Kenntnis genommen und die Austrittserklärung vorbereitet.
+Wir werden sie Ihrer Behörde unter der bei der Kommunalaufsicht des Landes Mecklenburg-Vorpommern gespeicherten E-Mail-Adresse übermitteln, wenn Sie auf den unten stehenden Link zur Anforderung klicken. Falls die Austrittserklärung NICHT versandt werden soll, teilen Sie uns das bitte durch Nutzung des Links zum Rückruf des Austrittswunsches mit.
+Falls der Austritt erfolgen soll:
+Bitte sorgen Sie dafür, dass die E-Mail zur Austrittserklärung durch eine zur Nutzung des offiziellen Postfachs Ihrer Behörde berechtigte Person geöffnet, gelesen und zur Bestätigung der in der Austrittserklärung enthaltene Link angeklickt wird.
+
+Den Versand der Austrittserklärung an Ihre Behörde können Sie HIER ANFORDERN:
+<%= withdrawal_confirm_url(activity_token: @participation.activity_token) %>
+
+Falls Sie KEINE Austrittserklärung anfordern möchten, können Sie den Austrittswunsch HIER ZURÜCKRUFEN.
+<%= withdrawal_reject_url(activity_token: @participation.activity_token) %>
+
+Mit freundlichem Gruß
+
+<%= MasterData.first.leading_cooperation_partner_name %>
+<%= MasterData.first.leading_cooperation_partner_address %>
+<%= MasterData.first.leading_cooperation_partner_email %>

@@ -29,6 +29,10 @@ nav.navbar {
   border-top: 1px solid $secondary;
 }
 
+table td.actions {
+  white-space: nowrap;
+}
+
 div.field_with_errors {
   display: inline;
 

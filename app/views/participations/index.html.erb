@@ -20,9 +20,12 @@
             <td><%= entry.send(col) %></td>
           <% end -%>
           <td><%= Participation.human_enum_name(:role, entry.role) if entry.role %></td>
-          <% %i[effectiveness_date withdrawal_effectiveness_date withdrawal_receipt_date].each do |col| -%>
-            <td><%= l(entry.send(col)) if entry.send(col).present? %></td>
-          <% end -%>
+          <td><%= l(entry.send(:effectiveness_date)) if entry.send(:effectiveness_date) %></td>
+          <td><%= if entry.send(:withdrawal_effectiveness_date_corrected) || entry.send(:withdrawal_effectiveness_date)
+                    l(entry.send(:withdrawal_effectiveness_date_corrected) ||
+                      entry.send(:withdrawal_effectiveness_date))
+                  end %></td>
+          <td><%= l(entry.send(:withdrawal_receipt_date)) if entry.send(:withdrawal_receipt_date) %></td>
         </tr>
       <% end -%>
     </tbody>

@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+DEFAULTS: &DEFAULTS
+  leading_cooperation_partner_name: 'name'
+  leading_cooperation_partner_address: 'address'
+  leading_cooperation_partner_email: 'email'
+
+one:
+  <<: *DEFAULTS
