@@ -18,3 +18,9 @@
     user.password = hsh[:password]
   end
 end
+
+unless MasterData.first
+  MasterData.create!(leading_cooperation_partner_name: 'Name',
+                     leading_cooperation_partner_address: 'Adresse',
+                     leading_cooperation_partner_email: 'mail@example.com')
+end
