@@ -9,7 +9,7 @@ module Admin
     end
 
     def new
-      @entry = User.new
+      @entry = User.new(role: :editor)
     end
 
     def edit

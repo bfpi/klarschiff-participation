@@ -6,6 +6,7 @@ class User < ApplicationRecord
   enum :role, { admin: 0, editor: 1 }, prefix: true
 
   validates :name, :login, presence: true, uniqueness: true
+  validates :role, presence: true
 
   scope :active, -> { where(active: true) }
 

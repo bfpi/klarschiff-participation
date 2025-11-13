@@ -6,8 +6,7 @@
   <table class="table">
     <thead>
       <tr>
-        <% %i[partner_number authority_name name_of_the_signatory role effectiveness_date withdrawal_effectiveness_date
-              withdrawal_receipt_date].each do |col| -%>
+        <% %i[partner_number authority_name role effectiveness_date withdrawal_effectiveness_date].each do |col| -%>
           <th scope="col"><%= Participation.human_attribute_name col %></th>
         <% end -%>
       </tr>
