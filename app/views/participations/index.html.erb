@@ -15,16 +15,13 @@
       <% @participations.each do |entry| -%>
         <tr>
           <th scope="row"><%= entry.partner_number %></th>
-          <% %i[authority_name name_of_the_signatory].each do |col| -%>
-            <td><%= entry.send(col) %></td>
-          <% end -%>
+          <td><%= entry.send(:authority_name) %></td>
           <td><%= Participation.human_enum_name(:role, entry.role) if entry.role %></td>
           <td><%= l(entry.send(:effectiveness_date)) if entry.send(:effectiveness_date) %></td>
           <td><%= if entry.send(:withdrawal_effectiveness_date_corrected) || entry.send(:withdrawal_effectiveness_date)
                     l(entry.send(:withdrawal_effectiveness_date_corrected) ||
                       entry.send(:withdrawal_effectiveness_date))
                   end %></td>
-          <td><%= l(entry.send(:withdrawal_receipt_date)) if entry.send(:withdrawal_receipt_date) %></td>
         </tr>
       <% end -%>
     </tbody>
