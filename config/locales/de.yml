@@ -206,7 +206,8 @@ de:
       title: Austrittserklärung aus dem Kooperationsverbund „KLARSCHIFF-MV“
       authority: 'Von:'
       leading_cooperation_partner: 'An:'
-      text_html: 'KOOPERATIONSVEREINBARUNG ÜBER DIE GEMEINSAME ZUSAMMENARBEIT BEI DER NUTZUNG UND WEITERENTWICKLUNG DER LANDESLÖSUNG „KLARSCHIFF-MV"<br><br>Hier: AUSTRITTSERKLÄRUNG<br><br>Sehr geehrte Damen und Herren,<br><br>hiermit erklärt %{authority_name}, %{authority_address} den fristgemäßen Austritt aus der o. g. Kooperationsvereinbarung mit Wirkung zum %{withdrawal_effectiveness_date}.<br>Es ist bekannt, dass der Austritt bis spätestens zum 01.03.[JJJJ] vor Beginn einer neuen Haushaltsperiode erfolgen muss. Mit der Wirksamkeit des Austritts werden die Rechte und Pflichten als Kooperationspartner nicht mehr wahrgenommen. Eine Nutzung des Backends der Landeslösung „Klarschiff-MV“ erfolgt dann nicht mehr.'
+      text_html: 'KOOPERATIONSVEREINBARUNG ÜBER DIE GEMEINSAME ZUSAMMENARBEIT BEI DER NUTZUNG UND WEITERENTWICKLUNG DER LANDESLÖSUNG „KLARSCHIFF-MV"<br><br>Hier: AUSTRITTSERKLÄRUNG<br><br>Sehr geehrte Damen und Herren,<br><br>hiermit erklärt %{authority_name}, %{authority_address} den fristgemäßen Austritt aus der o. g. Kooperationsvereinbarung mit Wirkung zum %{withdrawal_effectiveness_date}.<br>Es ist bekannt, dass der Austritt bis spätestens zum 01.03. vor Beginn einer neuen Haushaltsperiode erfolgen muss. Mit der Wirksamkeit des Austritts werden die Rechte und Pflichten als Kooperationspartner nicht mehr wahrgenommen. Eine Nutzung des Backends der Landeslösung „Klarschiff-MV“ erfolgt dann nicht mehr.'
+      withdrawal_effectiveness_date_dummy: 'unten angegebenen Austrittsdatum'
       submit: E-MAIL-PROGRAMM ZUM ABSENDEN ÖFFNEN
     reject:
       headline: Rückruf
