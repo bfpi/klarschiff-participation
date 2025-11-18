@@ -54,20 +54,24 @@ module Admin
 
     test 'no create without params for admin' do
       login username: 'admin'
-      post '/admin/users'
+      assert_difference 'User.count', 0 do
+        post '/admin/users'
 
-      assert_response :bad_request
+        assert_response :bad_request
+      end
     end
 
     test 'authorized create for admin' do
       login username: 'admin'
-      post '/admin/users', params: create_params
+      assert_difference 'User.count', +1 do
+        post '/admin/users', params: create_params
 
-      created_user = User.order(:created_at).last
+        created_user = User.order(:created_at).last
 
-      assert_redirected_to edit_admin_user_path(created_user)
+        assert_redirected_to edit_admin_user_path(created_user)
 
-      assert_equal 'Test', created_user.name
+        assert_equal 'Test', created_user.name
+      end
     end
 
     test 'authorized update for admin' do
@@ -80,7 +84,7 @@ module Admin
     end
 
     def create_params
-      { user: { name: 'Test', login: 'test', password: 'Test1', password_confirmation: 'Test1' } }
+      { user: { name: 'Test', login: 'test', password: 'Test1', password_confirmation: 'Test1', role: :editor } }
     end
   end
 end
