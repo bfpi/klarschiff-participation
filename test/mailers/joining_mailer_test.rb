@@ -21,4 +21,13 @@ class JoiningMailerTest < ActionMailer::TestCase
     assert_equal ['from@example.com'], mail.from
     assert_match 'Ihre Behörde hat Interesse bekundet', mail.body.encoded
   end
+
+  test 'joining' do
+    mail = JoiningMailer.joining(participation(:call_back))
+
+    assert_equal 'KOPIE: Beitrittserklärung zum Kooperationsverbund „KLARSCHIFF-MV“', mail.subject
+    assert_equal ['email@leading_cooperation_partner.de'], mail.to
+    assert_equal ['from@example.com'], mail.from
+    assert_match 'hiermit erklärt authority_name_call_back, authority_address_call_back den Beitritt', mail.body.encoded
+  end
 end

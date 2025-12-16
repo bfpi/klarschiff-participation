@@ -180,6 +180,7 @@ de:
       text: Wir haben die Beitrittserklärung an die hinterlegte Adresse gesendet.
     new:
       title: Beitrittserklärung zum Kooperationsverbund „KLARSCHIFF-MV“
+      title_copy: "KOPIE: Beitrittserklärung zum Kooperationsverbund „KLARSCHIFF-MV“"
       authority: 'Von:'
       leading_cooperation_partner: 'An:'
       text_html: 'KOOPERATIONSVEREINBARUNG ÜBER DIE GEMEINSAME ZUSAMMENARBEIT BEI DER NUTZUNG UND WEITERENTWICKLUNG DER LANDESLÖSUNG „KLARSCHIFF-MV"<br><br>Hier: BEITRITTSERKLÄRUNG<br><br>Sehr geehrte Damen und Herren,<br><br>hiermit erklärt %{authority_name}, %{authority_address} den Beitritt zu oben genannter Kooperationsvereinbarung und stimmt der Vereinbarung über die Verarbeitung personenbezogener Daten in gemeinsamer Verantwortlichkeit (Art. 26 Datenschutz-Grundverordnung - DSGVO) zu.'

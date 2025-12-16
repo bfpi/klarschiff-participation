@@ -3,7 +3,7 @@
 DEFAULTS: &DEFAULTS
   leading_cooperation_partner_name: 'name'
   leading_cooperation_partner_address: 'address'
-  leading_cooperation_partner_email: 'email'
+  leading_cooperation_partner_email: 'email@leading_cooperation_partner.de'
 
 one:
   <<: *DEFAULTS

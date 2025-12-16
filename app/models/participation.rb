@@ -76,6 +76,7 @@ class Participation < ApplicationRecord
 
   def changed_to_status_joining
     self.effectiveness_date = Time.zone.today.next_month.beginning_of_month
+    JoiningMailer.joining(self).deliver_now
   end
 
   def changed_to_status_informed_withdrawal

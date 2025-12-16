@@ -69,6 +69,6 @@ class WithdrawalControllerTest < ActionDispatch::IntegrationTest
   private
 
   def withdrawal_regex
-    /^mailto:\?to=email&subject=Austrittserklärung aus dem Kooperationsverbund „KLARSCHIFF-MV“&body=Von/
+    /^mailto:\?to=email@leading_cooperation_partner.de&subject=Austrittserklärung aus dem Kooperationsverbund/
   end
 end
