@@ -102,6 +102,7 @@ class ParticipationTest < ActiveSupport::TestCase
     participation.status_joining!
 
     assert_not_nil participation.effectiveness_date
+    assert_equal ['KOPIE: Beitrittserklärung zum Kooperationsverbund „KLARSCHIFF-MV“'], ActionMailer::Base.deliveries.map(&:subject).uniq
   end
 
   test 'notify joined participation while status informed_withdrawal' do

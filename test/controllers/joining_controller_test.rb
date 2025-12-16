@@ -67,6 +67,6 @@ class JoiningControllerTest < ActionDispatch::IntegrationTest
   private
 
   def joining_regex
-    /^mailto:\?to=email&subject=Beitrittserklärung zum Kooperationsverbund „KLARSCHIFF-MV“&body=Von/
+    /^mailto:\?to=email@leading_cooperation_partner.de&subject=Beitrittserklärung zum Kooperationsverbund/
   end
 end
