@@ -17,7 +17,7 @@
           <th scope="row"><%= entry.partner_number %></th>
           <td><%= entry.send(:authority_name) %></td>
           <td><%= Participation.human_enum_name(:role, entry.role) if entry.role %></td>
-          <td><%= l(entry.send(:effectiveness_date)) if entry.send(:effectiveness_date) %></td>
+          <td><%= l(entry.send(:effectiveness_date)) if entry.status_joined? && entry.send(:effectiveness_date) %></td>
           <td><%= if entry.send(:withdrawal_effectiveness_date_corrected) || entry.send(:withdrawal_effectiveness_date)
                     l(entry.send(:withdrawal_effectiveness_date_corrected) ||
                       entry.send(:withdrawal_effectiveness_date))
