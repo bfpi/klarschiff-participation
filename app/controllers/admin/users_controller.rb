@@ -25,7 +25,7 @@ module Admin
           redirect_to edit_admin_user_path(@entry)
         end
       else
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_content
       end
     end
 

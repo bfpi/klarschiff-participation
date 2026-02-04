@@ -16,7 +16,7 @@ class ParticipationsController < ApplicationController
 
     return if @participation.save
 
-    render :new, status: :unprocessable_entity
+    render :new, status: :unprocessable_content
   end
 
   private
