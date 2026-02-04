@@ -21,7 +21,7 @@ module Admin
 
     def inform
       participation = Participation.status_prepared.find(params[:participation_id])
-      return render status: :unprocessable_entity unless participation
+      return render status: :unprocessable_content unless participation
 
       participation.status_informed!
 
@@ -31,7 +31,7 @@ module Admin
 
     def join
       participation = Participation.status_joining.find(params[:participation_id])
-      return render status: :unprocessable_entity unless participation
+      return render status: :unprocessable_content unless participation
 
       participation.status_joined!
 
@@ -41,7 +41,7 @@ module Admin
 
     def withdrawal
       participation = Participation.status_joined.find(params[:participation_id])
-      return render status: :unprocessable_entity unless participation
+      return render status: :unprocessable_content unless participation
 
       participation.status_informed_withdrawal!
 
@@ -51,7 +51,7 @@ module Admin
 
     def withdrawal_check
       participation = Participation.status_withdrawal.find(params[:participation_id])
-      return render status: :unprocessable_entity unless participation
+      return render status: :unprocessable_content unless participation
 
       participation.status_withdrawal_check!
 
@@ -61,7 +61,7 @@ module Admin
 
     def withdraw
       participation = Participation.status_withdrawal_check.find(params[:participation_id])
-      return render status: :unprocessable_entity unless participation
+      return render status: :unprocessable_content unless participation
 
       participation.status_withdraw!
 
