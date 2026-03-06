@@ -1,12 +1,13 @@
 {
-  "dependencies": {
+  "name": "klarschiff-participation",
+  "devDependencies": {
     "@coffeelint/cli": "^5.2.11",
-    "eslint": "^9.38.0",
+    "eslint": "^9.39.3",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-html-erb": "^1.0.1",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-n": "^17.24.0",
     "eslint-plugin-promise": "^7.2.1"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@4.13.0"
 }
