@@ -79,7 +79,7 @@ GEM
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     base64 (0.3.0)
-    bcrypt (3.1.21)
+    bcrypt (3.1.22)
     better_html (2.2.0)
       actionview (>= 7.0)
       activesupport (>= 7.0)
@@ -180,7 +180,7 @@ GEM
       reline (>= 0.4.2)
     jquery-ui-rails (8.0.0)
       railties (>= 3.2.16)
-    json (2.19.1)
+    json (2.19.2)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -474,7 +474,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  bcrypt (~> 3.1.21)
+  bcrypt (~> 3.1.22)
   bootsnap
   bootstrap (~> 5.3.3)
   brakeman
