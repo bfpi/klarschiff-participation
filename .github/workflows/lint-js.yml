@@ -11,8 +11,8 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           cache: 'yarn'
-          corepack: true
           node-version: 20
+      - run: corepack enable
       - run: bin/eslint
   coffeelint:
     name: Coffee JS files
@@ -22,6 +22,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           cache: 'yarn'
-          corepack: true
           node-version: 20
+      - run: corepack enable
       - run: bin/coffeelint
