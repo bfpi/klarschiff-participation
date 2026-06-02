@@ -7,11 +7,11 @@ module Admin
     end
 
     def edit
-      @entry = Participation.find(params[:id])
+      @entry = Participation.find(params.expect(:id))
     end
 
     def update
-      @entry = Participation.find(params[:id])
+      @entry = Participation.find(params.expect(:id))
       if @entry.update(entry_params) && params[:save_and_close].present?
         redirect_to action: :index
       else
@@ -20,7 +20,7 @@ module Admin
     end
 
     def inform
-      participation = Participation.status_prepared.find(params[:participation_id])
+      participation = Participation.status_prepared.find(params.expect(:participation_id))
       return render status: :unprocessable_content unless participation
 
       participation.status_informed!
@@ -30,7 +30,7 @@ module Admin
     end
 
     def join
-      participation = Participation.status_joining.find(params[:participation_id])
+      participation = Participation.status_joining.find(params.expect(:participation_id))
       return render status: :unprocessable_content unless participation
 
       participation.status_joined!
@@ -40,7 +40,7 @@ module Admin
     end
 
     def withdrawal
-      participation = Participation.status_joined.find(params[:participation_id])
+      participation = Participation.status_joined.find(params.expect(:participation_id))
       return render status: :unprocessable_content unless participation
 
       participation.status_informed_withdrawal!
@@ -50,7 +50,7 @@ module Admin
     end
 
     def withdrawal_check
-      participation = Participation.status_withdrawal.find(params[:participation_id])
+      participation = Participation.status_withdrawal.find(params.expect(:participation_id))
       return render status: :unprocessable_content unless participation
 
       participation.status_withdrawal_check!
@@ -60,7 +60,7 @@ module Admin
     end
 
     def withdraw
-      participation = Participation.status_withdrawal_check.find(params[:participation_id])
+      participation = Participation.status_withdrawal_check.find(params.expect(:participation_id))
       return render status: :unprocessable_content unless participation
 
       participation.status_withdraw!

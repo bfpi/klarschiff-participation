@@ -13,7 +13,7 @@ module Admin
     end
 
     def edit
-      @entry = User.find(params[:id])
+      @entry = User.find(params.expect(:id))
     end
 
     def create
@@ -30,7 +30,7 @@ module Admin
     end
 
     def update
-      @entry = User.find(params[:id])
+      @entry = User.find(params.expect(:id))
       if @entry.update(entry_params) && params[:save_and_close].present?
         redirect_to action: :index
       else
@@ -39,7 +39,7 @@ module Admin
     end
 
     def destroy
-      @entry = User.find(params[:id])
+      @entry = User.find(params.expect(:id))
       redirect_to action: :index if @entry.update active: false
     end
 
