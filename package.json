@@ -1,12 +1,15 @@
 {
-  "dependencies": {
+  "name": "klarschiff-participation",
+  "private": true,
+  "author": "BFPI GmbH <support-klarschiff@bfpi.de> (https://bfpi.de)",
+  "packageManager": "yarn@4.16.0",
+  "devDependencies": {
     "@coffeelint/cli": "^5.2.11",
-    "eslint": "^9.38.0",
-    "eslint-config-standard": "^17.1.0",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.4.1",
     "eslint-plugin-html-erb": "^1.0.1",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-n": "^17.24.0",
-    "eslint-plugin-promise": "^7.3.0"
-  },
-  "packageManager": "yarn@4.8.1"
+    "globals": "^17.6.0",
+    "stylelint": "^17.13.0",
+    "stylelint-config-standard-scss": "^17.0.0"
+  }
 }
