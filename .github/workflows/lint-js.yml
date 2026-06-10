@@ -1,6 +1,8 @@
 name: Javascripts
 
-on: [push]
+on:
+  - push
+  - workflow_call
 
 jobs:
   eslint:
@@ -10,14 +12,5 @@ jobs:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: '22'
       - run: bin/eslint
-  coffeelint:
-    name: Coffee JS files
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 20
-      - run: bin/coffeelint
