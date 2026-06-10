@@ -1,9 +1,11 @@
 name: ERB Templates
 
-on: [push]
+on:
+  - push
+  - workflow_call
 
 jobs:
-  build:
+  erblint:
     name: ERB files
     runs-on: ubuntu-latest
     steps:
@@ -13,4 +15,4 @@ jobs:
         with:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Run ERB Lint
-        run: bin/erb_lint
+        run: bin/erblint

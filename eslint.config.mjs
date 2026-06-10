@@ -1,34 +1,16 @@
-import { defineConfig } from 'eslint/config'
+import js from "@eslint/js";
 import htmlErb from 'eslint-plugin-html-erb'
-import globals from 'globals'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-import js from '@eslint/js'
-import { FlatCompat } from '@eslint/eslintrc'
+import globals from "globals";
+import { defineConfig } from "eslint/config";
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all
-})
-
-export default defineConfig([{
-  extends: compat.extends('standard'),
-
-  plugins: {
-    'html-erb': htmlErb
-  },
-
-  languageOptions: {
-    globals: {
-      ...globals.browser
+export default defineConfig([
+  {
+    files: ["**/*.{js,mjs,cjs}"],
+    plugins: {
+      'js': js,
+      'html-erb': htmlErb
     },
-
-    ecmaVersion: 12,
-    sourceType: 'module'
+    extends: ["js/recommended"],
+    languageOptions: { globals: globals.browser }
   },
-
-  rules: {}
-}])
+]);

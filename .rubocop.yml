@@ -6,17 +6,11 @@ plugins:
 
 AllCops:
   Exclude:
-    - 'bin/brakeman'
-    - 'bin/bundle'
-    - 'bin/dev'
-    - 'bin/ci'
-    - 'bin/rails'
-    - 'bin/rake'
-    - 'bin/rubocop'
-    - 'bin/setup'
-    - 'bin/thrust'
+    - 'bin/*'
     - 'config/ci.rb'
+    - 'config.ru'
     - 'db/schema.rb'
+    - 'Rakefile'
     - 'vendor/**/**'
   NewCops: enable
 
@@ -58,10 +52,7 @@ Style/FrozenStringLiteralComment:
     - 'config/application.rb'
     - 'config/boot.rb'
     - 'config/environment.rb'
-    - 'config/environments/consolidation.rb'
-    - 'config/environments/development.rb'
-    - 'config/environments/production.rb'
-    - 'config/environments/test.rb'
+    - 'config/environments/*'
     - 'config/initializers/assets.rb'
     - 'config/initializers/content_security_policy.rb'
     - 'config/initializers/filter_parameter_logging.rb'
@@ -72,27 +63,18 @@ Style/FrozenStringLiteralComment:
 
 Style/GlobalStdStream:
   Exclude:
-    - 'config/environments/consolidation.rb'
-    - 'config/environments/production.rb'
+    - 'config/environments/*'
 
 Style/PercentLiteralDelimiters:
   Exclude:
     - 'config/application.rb'
-
-Style/RedundantConstantBase:
-  Exclude:
-    - 'config/environments/consolidation.rb'
-    - 'config/environments/production.rb'
 
 Style/StringLiterals:
   Exclude:
     - 'config/application.rb'
     - 'config/boot.rb'
     - 'config/environment.rb'
-    - 'config/environments/consolidation.rb'
-    - 'config/environments/development.rb'
-    - 'config/environments/production.rb'
-    - 'config/environments/test.rb'
+    - 'config/environments/*'
     - 'config/initializers/assets.rb'
     - 'config/puma.rb'
 
