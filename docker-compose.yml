@@ -20,7 +20,7 @@ services:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./db:/db
 
-  participation:
+  web:
     container_name: klarschiff-participation
     image: ghcr.io/bfpi/klarschiff/participation:latest
     build:
@@ -44,7 +44,7 @@ services:
     volumes:
       - ./log:/rails/log
 
-  participation_jobs:
+  jobs:
     container_name: klarschiff-participation-jobs
     image: ghcr.io/bfpi/klarschiff/participation:latest
     build:
