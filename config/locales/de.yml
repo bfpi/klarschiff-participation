@@ -136,6 +136,8 @@ de:
         confirm: Die Mitteilung zur Beitrittserklärung wurde versendet.
       join:
         confirm: Der Beitritt des Kooperationspartners ist abgeschlossen.
+      new:
+        title: Login
       withdrawal:
         confirm: Die Mitteilung zur Austrittserklärung wurde versendet.
       withdrawal_check:
