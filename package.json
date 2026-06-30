@@ -4,7 +4,6 @@
   "author": "BFPI GmbH <support-klarschiff@bfpi.de> (https://bfpi.de)",
   "packageManager": "yarn@4.16.0",
   "devDependencies": {
-    "@coffeelint/cli": "^5.2.11",
     "@eslint/js": "^10.0.1",
     "eslint": "^10.4.1",
     "eslint-plugin-html-erb": "^1.0.1",
