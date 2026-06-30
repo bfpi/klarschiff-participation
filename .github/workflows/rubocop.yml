@@ -1,9 +1,11 @@
 name: RuboCop
 
-on: [push]
+on:
+  - push
+  - workflow_call
 
 jobs:
-  build:
+  rubocop:
     name: Run
     runs-on: ubuntu-latest
     steps:
