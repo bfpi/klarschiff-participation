@@ -9,7 +9,7 @@ updates:
     versioning-strategy: lockfile-only
     ignore:
       - dependency-name: "bootstrap"
-        versions: [">= 5.2", "< 6"]
+        versions: ["< 6"]
       - dependency-name: "rails"
         update-types: ["version-update:semver-major", "version-update:semver-minor"]
 
@@ -23,7 +23,7 @@ updates:
       - "manually"
     ignore:
       - dependency-name: "bootstrap"
-        versions: [">= 5.2", "< 6"]
+        versions: ["< 6"]
       - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
 
