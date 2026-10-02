@@ -36,6 +36,15 @@
 /config/master.key
 /config/credentials.yml.enc
 
-node_modules/
+# Yarn an NPM related stuff
+/node_modules
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
 *.swp
 config/users.yml
