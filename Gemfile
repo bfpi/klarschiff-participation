@@ -13,19 +13,15 @@ gem 'pg', '~> 1.6.3'
 gem 'puma', '~> 8.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7'
-# Use Active Model has_secure_password
-gem 'bcrypt', '~> 3.1.7'
-
-# Use sqlite3 as the database for Active Record
-# gem "sqlite3", ">= 2.1"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
+# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem 'turbo-rails'
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails'
+
+# Use Active Model has_secure_password
+gem 'bcrypt', '~> 3.1.22'
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 # gem 'solid_cable'
