@@ -1,18 +1,11 @@
-# SQLite. Versions 3.8.0 and up are supported.
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem "sqlite3"
-#
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: <%= ENV.fetch('KLARSCHIFF_PARTICIPATION_DATABASE_HOST', 'localhost') %>
-  password: <%= ENV.fetch('KLARSCHIFF_PARTICIPATION_DATABASE_PASSWORD', 'klarschiff_participation') %>
+  host: <%= ENV.fetch('DB_HOST', 'localhost') %>
+  password: <%= ENV.fetch('DB_PASSWORD', '<password>') %>
   pool: <%= ENV.fetch('RAILS_MAX_THREADS', 5) %>
-  port: <%= ENV.fetch('KLARSCHIFF_PARTICIPATION_DATABASE_PORT', 5432) %>
-  username: <%= ENV.fetch('KLARSCHIFF_PARTICIPATION_DATABASE_USERNAME', 'klarschiff_participation') %>
-  username: klarschiff_participation
+  port: <%= ENV.fetch('DB_PORT', 5432) %>
+  username: <%= ENV.fetch('DB_USERNAME', 'klarschiff_participation') %>
 
 development:
   <<: *default
@@ -24,10 +17,6 @@ development:
 test:
   <<: *default
   database: klarschiff_participation_test
-
-consolidation:
-  <<: *default
-  database: klarschiff_participation_consolidation
 
 production:
   <<: *default
