@@ -17,6 +17,8 @@ const compat = new FlatCompat({
 export default defineConfig([{
   extends: compat.extends('standard'),
 
+  ignores: ['.yarn/**/*'],
+
   plugins: {
     'html-erb': htmlErb
   },

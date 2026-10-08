@@ -24,9 +24,9 @@ module KlarschiffParticipation
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.action_mailer.show_previews = true
-
     config.time_zone = 'Europe/Berlin'
+
+    config.action_mailer.show_previews = true
 
     config.i18n.default_locale = :de
     config.i18n.available_locales = %i[de]
@@ -38,11 +38,13 @@ module KlarschiffParticipation
         YAML.load file, aliases: true
       end.with_indifferent_access[Rails.env]
 
-      relative_url_root = settings.dig(:instance, :relative_url_root)
-      config.relative_url_root = relative_url_root if relative_url_root.present?
+      if settings
+        relative_url_root = settings.dig(:instance, :relative_url_root)
+        config.relative_url_root = relative_url_root if relative_url_root.present?
 
-      host = settings.dig(:mailer, :host)
-      config.action_mailer.default_url_options = { host: host } if host.present?
+        host = settings.dig(:mailer, :host)
+        config.action_mailer.default_url_options = { host: host } if host.present?
+      end
     end
   end
 end
