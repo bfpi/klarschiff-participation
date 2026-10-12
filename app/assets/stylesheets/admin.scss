@@ -25,6 +25,7 @@ nav.navbar {
 .footer {
   @extend .fixed-bottom;
   @extend .py-2;
+
   background-color: $gray-200;
   border-top: 1px solid $secondary;
 }
