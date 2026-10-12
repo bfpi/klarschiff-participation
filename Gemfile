@@ -47,7 +47,7 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem 'brakeman', require: false
 
-  gem 'minitest', '~> 6.0.6' # minitest 6 is incompatible with Rails < 8.1 (https://github.com/minitest/minitest/issues/1045)
+  gem 'minitest', '~> 6.0.6'
 
   # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
   gem 'bundler-audit', require: false
