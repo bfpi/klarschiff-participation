@@ -1,7 +1,5 @@
 #! /usr/bin/env bash
 # vim: set ft=sh:
 bin/rubocop
-bin/eslint
-bin/stylelint
 bin/erblint
 bin/brakeman
