@@ -21,24 +21,10 @@ ENV RAILS_ENV=${RAILS_ENV} \
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
-# Install application node modules
-COPY .nvmrc .yarnrc.yml package.json yarn.lock .
-COPY .yarn .yarn
-
-# Install packages needed to build gems and node modules
+# Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl git gnupg pkg-config libpq-dev libpq5 libyaml-dev vim
-
-RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor > /usr/share/keyrings/nodesource.gpg && \
-    echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$(sed -E 's/^v?([0-9]+).*/\1/' .nvmrc).x nodistro main" > /etc/apt/sources.list.d/nodesource.list && \
-    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor > /usr/share/keyrings/yarnkey.gpg && \
-    echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" > /etc/apt/sources.list.d/yarn.list && \
-    apt-get update -qq && \
-    apt-get install --no-install-recommends -y nodejs yarn && \
+    apt-get install --no-install-recommends -y build-essential curl git pkg-config libpq-dev libpq5 libyaml-dev vim && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
-RUN --mount=type=cache,id=yarn,target=/rails/.cache/yarn YARN_CACHE_FOLDER=/rails/.cache/yarn \
-   yarn install --immutable
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
